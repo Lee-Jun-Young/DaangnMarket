@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DaangnMarket</string>
+    <string name="app_name">당근마켓</string>
 
     <string name="activityMain_bottomNaviMenuTitleHome">홈</string>
     <string name="activityMain_bottomNaviMenuTitleLife">동네생활</string>
