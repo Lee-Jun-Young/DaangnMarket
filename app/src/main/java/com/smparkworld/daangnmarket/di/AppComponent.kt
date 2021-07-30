@@ -5,7 +5,6 @@ import com.smparkworld.daangnmarket.ui.main.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
-import dagger.Subcomponent
 import javax.inject.Singleton
 
 @Singleton
@@ -22,8 +21,6 @@ interface AppComponent {
     interface Factory {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
-
-    fun inject(mainActivity: MainActivity)
 }
 
 @Module(subcomponents = [

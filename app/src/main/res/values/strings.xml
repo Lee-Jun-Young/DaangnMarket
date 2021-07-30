@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DaangnMarket</string>
+
+    <string name="activityMain_bottomNaviMenuTitleHome">홈</string>
+    <string name="activityMain_bottomNaviMenuTitleLife">동네생활</string>
+    <string name="activityMain_bottomNaviMenuTitleMyLocation">내 근처</string>
+    <string name="activityMain_bottomNaviMenuTitleChat">채팅</string>
+    <string name="activityMain_bottomNaviMenuTitleMyInfo">나의 당근</string>
 </resources>
