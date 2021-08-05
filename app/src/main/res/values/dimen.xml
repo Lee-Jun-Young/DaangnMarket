@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- IntroActivity -->
+    <dimen name="activityIntro_titleMarginTop">27dp</dimen>
+    <dimen name="activityIntro_titleMarginBottom">50dp</dimen>
+    <dimen name="activityIntro_introTitleMarginTop">30dp</dimen>
+    <dimen name="activityIntro_introTitleTextSize">20dp</dimen>
+    <dimen name="activityIntro_introDescriptionMarginTop">10dp</dimen>
+    <dimen name="activityIntro_introDescriptionTextSize">16dp</dimen>
+    <dimen name="activityIntro_startButtonMarginTop">110dp</dimen>
+    <dimen name="activityIntro_startButtonMarginLeftRightBottom">15dp</dimen>
+    <dimen name="activityIntro_startButtonPadding">12dp</dimen>
+    <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
+</resources>

@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">당근마켓</string>
 
+    <!-- MainActivity -->
     <string name="activityMain_bottomNaviMenuTitleHome">홈</string>
     <string name="activityMain_bottomNaviMenuTitleLife">동네생활</string>
     <string name="activityMain_bottomNaviMenuTitleMyLocation">내 근처</string>
     <string name="activityMain_bottomNaviMenuTitleChat">채팅</string>
     <string name="activityMain_bottomNaviMenuTitleMyInfo">나의 당근</string>
+
+    <!-- IntroActivity -->
+    <string name="activityIntro_introTitle">우리 동네 중고 직거래</string>
+    <string name="activityIntro_introDescription">당근마켓은 동네 직거래 마켓이에요.\n내 동네를 설정하고 시작해보세요!</string>
+    <string name="activityIntro_start">내 동네 설정하고 시작하기</string>
 </resources>
