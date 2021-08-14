@@ -2,18 +2,11 @@ package com.smparkworld.daangnmarket.ui.launch
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityIntroBinding
-import com.smparkworld.daangnmarket.ui.main.MainActivity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class IntroActivity : AppCompatActivity() {
 
@@ -29,7 +22,7 @@ class IntroActivity : AppCompatActivity() {
             this, R.layout.activity_intro
         ).apply {
             btnStart.setOnClickListener {
-                startActivity(Intent(this@IntroActivity, MainActivity::class.java))
+                startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
             }
         }
     }

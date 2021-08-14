@@ -12,4 +12,9 @@
     <dimen name="activityIntro_startButtonMarginLeftRightBottom">15dp</dimen>
     <dimen name="activityIntro_startButtonPadding">12dp</dimen>
     <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
+
+    <!-- LoginActivity -->
+    <dimen name="activityLogin_addressSearchMargin">8dp</dimen>
+    <dimen name="activityLogin_addressSearchPadding">8dp</dimen>
+    <dimen name="activityLogin_addressSearchTestSize">17dp</dimen>
 </resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.smparkworld.daangnmarket.ui.launch.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.smparkworld.daangnmarket.ui.ClearEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activityLogin_addressSearchMargin"
+            android:padding="@dimen/activityLogin_addressSearchPadding"
+            android:singleLine="true"
+            android:hint="@string/activityLogin_addressSearchHint"
+            android:text="@={vm.addressSearch}"
+            android:textSize="@dimen/activityLogin_addressSearchTestSize"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            android:imeOptions="actionSearch"
+            app:clearButton="@drawable/ic_baseline_cancel_24"
+            app:underlineColor="@color/gray"
+            app:onAction="@{vm::searchAddress}"/>
+
+    </LinearLayout>
+
+</layout>
