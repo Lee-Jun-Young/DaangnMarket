@@ -14,7 +14,7 @@ class LoginActivity : AppCompatActivity() {
         loginComponent = (application as DaangnApp).appComponent.loginComponent().create()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_launch_login)
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, AddressFragment())

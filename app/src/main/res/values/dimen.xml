@@ -13,8 +13,8 @@
     <dimen name="activityIntro_startButtonPadding">12dp</dimen>
     <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
 
-    <!-- LoginActivity -->
-    <dimen name="activityLogin_addressSearchMargin">8dp</dimen>
-    <dimen name="activityLogin_addressSearchPadding">8dp</dimen>
-    <dimen name="activityLogin_addressSearchTestSize">17dp</dimen>
+    <!-- AddressFragment -->
+    <dimen name="fragmentAddress_searchMargin">8dp</dimen>
+    <dimen name="fragmentAddress_searchPadding">8dp</dimen>
+    <dimen name="fragmentAddress_searchTestSize">17dp</dimen>
 </resources>

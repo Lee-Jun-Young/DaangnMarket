@@ -13,7 +13,7 @@
     <string name="activityIntro_introDescription">당근마켓은 동네 직거래 마켓이에요.\n내 동네를 설정하고 시작해보세요!</string>
     <string name="activityIntro_start">내 동네 설정하고 시작하기</string>
 
-    <!-- LoginActivity -->
-    <string name="activityLogin_addressSearchHint">내 동네 이름(동,읍,면)으로 검색</string>
+    <!-- AddressFragment -->
+    <string name="fragmentAddress_searchHint">내 동네 이름(동,읍,면)으로 검색</string>
 
 </resources>

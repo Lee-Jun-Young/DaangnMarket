@@ -6,11 +6,11 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.smparkworld.daangnmarket.R
-import com.smparkworld.daangnmarket.databinding.ActivityIntroBinding
+import com.smparkworld.daangnmarket.databinding.ActivityLaunchIntroBinding
 
 class IntroActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityIntroBinding
+    private lateinit var binding: ActivityLaunchIntroBinding
 
     private val rippleAnim by lazy {
         AnimationUtils.loadAnimation(this, R.anim.set_launch_markerripple)
@@ -18,8 +18,8 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityIntroBinding>(
-            this, R.layout.activity_intro
+        binding = DataBindingUtil.setContentView<ActivityLaunchIntroBinding>(
+            this, R.layout.activity_launch_intro
         ).apply {
             btnStart.setOnClickListener {
                 startActivity(Intent(this@IntroActivity, LoginActivity::class.java))

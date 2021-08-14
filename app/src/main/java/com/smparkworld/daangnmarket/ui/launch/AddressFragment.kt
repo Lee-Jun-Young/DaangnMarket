@@ -2,14 +2,13 @@ package com.smparkworld.daangnmarket.ui.launch
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import com.smparkworld.daangnmarket.databinding.FragmentAddressBinding
+import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import javax.inject.Inject
 
 class AddressFragment : Fragment() {
@@ -25,7 +24,7 @@ class AddressFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return FragmentAddressBinding.inflate(inflater).apply {
+        return FragmentLaunchAddressBinding.inflate(inflater).apply {
             lifecycleOwner = viewLifecycleOwner
             vm = loginViewModel
         }.root
