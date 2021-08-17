@@ -34,14 +34,13 @@ class ClearEditText : AppCompatEditText, TextWatcher, OnTouchListener {
     private var underlineColor: Int = 0
 
     private fun init(attrs: AttributeSet? = null) {
-        val scale = 0.7
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText)
         leftDrawable = typeArray.getDrawable(R.styleable.ClearEditText_android_drawableLeft)?.apply {
-            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+            setBounds(0, 0, (intrinsicWidth * 0.9).toInt(), (intrinsicHeight * 0.9).toInt())
             setCompoundDrawables(leftDrawable, null, null, null)
         }
         clearDrawable = typeArray.getDrawable(R.styleable.ClearEditText_clearButton)?.apply {
-            setBounds(0, 0, (intrinsicWidth * scale).toInt(), (intrinsicHeight * scale).toInt())
+            setBounds(0, 0, (intrinsicWidth * 0.7).toInt(), (intrinsicHeight * 0.7).toInt())
         }
         underlineColor = typeArray.getColor(
                 R.styleable.ClearEditText_underlineColor,

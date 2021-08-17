@@ -14,7 +14,13 @@
     <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
 
     <!-- AddressFragment -->
-    <dimen name="fragmentAddress_searchMargin">8dp</dimen>
-    <dimen name="fragmentAddress_searchPadding">8dp</dimen>
+    <dimen name="fragmentAddress_marginLeftRight">17dp</dimen>
+    <dimen name="fragmentAddress_searchMarginTop">8dp</dimen>
     <dimen name="fragmentAddress_searchTestSize">17dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationMarginTop">12dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationMarginBottom">5dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_aroundAddressMarginTop">30dp</dimen>
+    <dimen name="fragmentAddress_aroundAddressTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressItemTextSize">15dp</dimen>
 </resources>
