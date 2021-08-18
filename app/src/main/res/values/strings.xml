@@ -12,4 +12,26 @@
     <string name="activityIntro_introTitle">우리 동네 중고 직거래</string>
     <string name="activityIntro_introDescription">당근마켓은 동네 직거래 마켓이에요.\n내 동네를 설정하고 시작해보세요!</string>
     <string name="activityIntro_start">내 동네 설정하고 시작하기</string>
+
+    <!-- CategoryListActivity -->
+    <string name="activityCategoryList_titleText">관심주제 설정</string>
+    <string name="activityCategoryList_contentText">동네생활에서 보고 싶은 \n관심주제들만 선택해보세요.</string>
+    <string name="activityCategoryList_categoryName_1">동네맛집</string>
+    <string name="activityCategoryList_categoryName_2">동네소식</string>
+    <string name="activityCategoryList_categoryName_3">분실/실종센터</string>
+    <string name="activityCategoryList_categoryName_4">일상</string>
+    <string name="activityCategoryList_categoryName_5">해주세요</string>
+    <string name="activityCategoryList_categoryName_6">취미생활</string>
+    <string name="activityCategoryList_categoryName_7">고양이</string>
+    <string name="activityCategoryList_categoryName_8">강아지</string>
+    <string name="activityCategoryList_categoryName_9">건강</string>
+    <string name="activityCategoryList_categoryName_10">살림</string>
+    <string name="activityCategoryList_categoryName_11">인테리어</string>
+    <string name="activityCategoryList_categoryName_12">교육/학원</string>
+    <string name="activityCategoryList_categoryName_13">동네사진전</string>
+    <string name="activityCategoryList_categoryName_14">출산/육아</string>
+    <string name="activityCategoryList_categoryName_15">기타</string>
+    <string name="activityCategoryList_select_snackBar_format">을/를 관심주제로 추가했어요</string>
+    <string name="activityCategoryList_unselect_snackBar_format">을/를 관심주제에서 제외했어요</string>
+
 </resources>

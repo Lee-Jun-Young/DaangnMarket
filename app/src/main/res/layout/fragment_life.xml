@@ -1,16 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="동네생활 화면"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="life"
+            type="com.smparkworld.daangnmarket.ui.main.life.LifeFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/life_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="면목본동"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/iv_life_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_baseline_search_24" />
+
+                <ImageView
+                    android:id="@+id/iv_life_list"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_list" />
+
+                <ImageView
+                    android:id="@+id/iv_life_notification"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_life_notification" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#000000" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip10"
+                                style="@style/Widget.MaterialComponents.Chip.Action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{life::onClick}"
+                                app:chipIcon="@drawable/ic_list" />
+
+                            <com.google.android.material.chip.Chip
+                                style="@style/Widget.MaterialComponents.Chip.Action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="우리동네질문" />
+
+                            <com.google.android.material.chip.Chip
+                                style="@style/Widget.MaterialComponents.Chip.Action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="동네사건사고" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chip_group"
+                                style="@style/Widget.MaterialComponents.Chip.Action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="5dp"
+                                app:singleLine="true"
+                                app:singleSelection="true" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_addLife"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{life::onClick}"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_life_add" />
+
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</layout>

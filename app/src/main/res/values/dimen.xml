@@ -12,4 +12,9 @@
     <dimen name="activityIntro_startButtonMarginLeftRightBottom">15dp</dimen>
     <dimen name="activityIntro_startButtonPadding">12dp</dimen>
     <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
+
+    <!-- CategoryListActivity -->
+    <dimen name="activityCategoryList_titleImageSize">24dp</dimen>
+    <dimen name="activityCategoryList_titleTextSize">20dp</dimen>
+    <dimen name="activityCategoryList_contentTextSize">18dp</dimen>
 </resources>
