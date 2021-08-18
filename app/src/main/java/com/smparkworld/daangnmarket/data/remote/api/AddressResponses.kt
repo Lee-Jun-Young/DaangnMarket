@@ -17,6 +17,31 @@ data class AddressAroundResponse(
     @SerializedName("nextPage")
     var nextPage: Int,
 
+    @SerializedName("pageSize")
+    var pageSize: Int,
+
+    @SerializedName("count")
+    var count: Int,
+
+    @SerializedName("data")
+    var data: List<Address>
+)
+
+
+/**
+ * "/address/search" API에 대한 Response
+ */
+data class AddressSearchResponse(
+
+    @SerializedName("search")
+    var search: String,
+
+    @SerializedName("nextPage")
+    var nextPage: Int,
+
+    @SerializedName("pageSize")
+    var pageSize: Int,
+
     @SerializedName("count")
     var count: Int,
 

@@ -1,8 +1,6 @@
 package com.smparkworld.daangnmarket.ui.launch
 
-import android.content.Context
 import android.location.Location
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +15,6 @@ import java.io.IOException
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-        private val applicationContext: Context,
         private val addressRepository: AddressRepository
 ) : ViewModel() {
 
@@ -33,6 +30,7 @@ class LoginViewModel @Inject constructor(
 
         viewModelScope.launch {
 
+            addressSearch.value = null
             _addressFlow.value = addressRepository.getAroundAddress(location, 20) {
                 if (it is IOException) {
                     _error.value = R.string.error_failedToConnectNetwork
@@ -45,6 +43,20 @@ class LoginViewModel @Inject constructor(
     }
 
     fun searchAddress() {
-        Toast.makeText(applicationContext, addressSearch.value, Toast.LENGTH_SHORT).show()
+
+        viewModelScope.launch {
+
+            val search = addressSearch.value
+            if (!search.isNullOrEmpty()) {
+                _addressFlow.value = addressRepository.getSearchedAddress(search, 20) {
+                    if (it is IOException) {
+                        _error.value = R.string.error_failedToConnectNetwork
+                    } else {
+                        _error.value = R.string.error_fatalNetwork
+                    }
+                    it.printStackTrace()
+                }
+            }
+        }
     }
 }

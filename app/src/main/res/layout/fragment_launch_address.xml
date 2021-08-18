@@ -37,7 +37,7 @@
                 app:onAction="@{vm::searchAddress}"/>
 
             <Button
-                android:id="@+id/btnStart"
+                android:id="@+id/btnAddressAround"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fragmentAddress_findCurrentLocationMarginTop"
@@ -61,7 +61,46 @@
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:divideLine="@{true}"
-            tools:listitem="@layout/item_launch_address"/>
+            tools:listitem="@layout/item_launch_address"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fragmentAddress_addressEmptyImgMarginBottom"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/fragmentAddress_addressEmptyImg"
+                    android:layout_height="@dimen/fragmentAddress_addressEmptyImg"
+                    android:src="@drawable/img_no_location"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fragmentAddress_addressEmptyDescriptionMarginTop"
+                    android:gravity="center"
+                    android:text="@string/fragmentAddress_addressEmptyDescription"
+                    android:textSize="@dimen/fragmentAddress_addressEmptyDescriptionTextSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fragmentAddress_addressEmptyBtnMarginTop"
+                    android:text="@string/fragmentAddress_addressEmptyBtn"
+                    android:textSize="@dimen/fragmentAddress_addressEmptyDescriptionTextSize"
+                    android:textColor="@color/brandColor"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -13,4 +13,11 @@ interface AddressApi {
             @Query("page") page: Int,
             @Query("size") size: Int
     ): Response<AddressAroundResponse>
+
+    @GET("/address/search")
+    suspend fun getSearch(
+            @Query("search") search: String,
+            @Query("page") page: Int,
+            @Query("size") size: Int
+    ): Response<AddressSearchResponse>
 }

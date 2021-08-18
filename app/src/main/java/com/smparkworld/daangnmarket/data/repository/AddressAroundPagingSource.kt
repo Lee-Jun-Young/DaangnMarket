@@ -7,7 +7,7 @@ import com.smparkworld.daangnmarket.data.remote.AddressRemoteDataSource
 import com.smparkworld.daangnmarket.model.Address
 import retrofit2.HttpException
 
-class AddressPagingSource(
+class AddressAroundPagingSource(
         private val remoteDataSource: AddressRemoteDataSource,
         private val location: Location,
         private val pageSize: Int,
@@ -18,7 +18,7 @@ class AddressPagingSource(
         try {
             val nextPage = params.key ?: 0
 
-            val response = remoteDataSource.getAroundAddress(location, nextPage, pageSize)
+            val response = remoteDataSource.getAddressAround(location, nextPage, pageSize)
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {

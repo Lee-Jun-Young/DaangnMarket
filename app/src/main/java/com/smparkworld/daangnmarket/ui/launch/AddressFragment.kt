@@ -36,6 +36,7 @@ class AddressFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             vm = loginViewModel
 
+            btnAddressAround.setOnClickListener { loadAroundAddress() }
             initObserver()
             initAddressList(addressList)
         }.root
@@ -63,14 +64,16 @@ class AddressFragment : Fragment() {
 
     private fun initObserver() {
         loginViewModel.error.observe(viewLifecycleOwner) { showSnackbar(it) }
+        loginViewModel.addressSearch.observe(viewLifecycleOwner) {
+            loginViewModel.searchAddress()
+        }
     }
 
     private fun initAddressList(list: RecyclerView) {
-        val adapter = AddressAdapter()
-        list.adapter = adapter
-
         loginViewModel.addressFlow.observe(viewLifecycleOwner) { flow ->
             viewLifecycleOwner.lifecycleScope.launch {
+                val adapter = AddressAdapter()
+                list.adapter = adapter
                 flow.collectLatest { adapter.submitData(it) }
             }
         }

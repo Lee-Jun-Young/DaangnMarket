@@ -23,4 +23,9 @@
     <dimen name="fragmentAddress_aroundAddressMarginTop">30dp</dimen>
     <dimen name="fragmentAddress_aroundAddressTextSize">15dp</dimen>
     <dimen name="fragmentAddress_addressItemTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyImg">100dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyImgMarginBottom">40dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyDescriptionMarginTop">15dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyDescriptionTextSize">18dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyBtnMarginTop">15dp</dimen>
 </resources>

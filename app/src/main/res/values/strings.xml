@@ -24,5 +24,7 @@
     <string name="fragmentAddress_searchHint">내 동네 이름(동,읍,면)으로 검색</string>
     <string name="fragmentAddress_findCurrentLocation">현재 위치로 찾기</string>
     <string name="fragmentAddress_aroundTitle">근처동네</string>
+    <string name="fragmentAddress_addressEmptyDescription">현재 위치로 동네를 받아오지 못했습니다.\n내 동네 이름으로 검색해보세요!</string>
+    <string name="fragmentAddress_addressEmptyBtn">내 동네 이름 검색하기</string>
 
 </resources>
