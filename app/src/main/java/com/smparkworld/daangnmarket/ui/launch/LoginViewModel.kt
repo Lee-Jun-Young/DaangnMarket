@@ -24,6 +24,9 @@ class LoginViewModel @Inject constructor(
     private val _addressFlow = MutableLiveData<Flow<PagingData<Address>>>()
     val addressFlow: LiveData<Flow<PagingData<Address>>> = _addressFlow
 
+    private val _addressFail = MutableLiveData<Boolean>()
+    val addressFail: LiveData<Boolean> = _addressFail
+
     val addressSearch = MutableLiveData<String>()
 
     fun loadAroundAddress(location: Location) {
@@ -31,11 +34,17 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
 
             addressSearch.value = null
+            _addressFail.value = false
             _addressFlow.value = addressRepository.getAroundAddress(location, 20) {
-                if (it is IOException) {
-                    _error.value = R.string.error_failedToConnectNetwork
-                } else {
-                    _error.value = R.string.error_fatalNetwork
+                when (it) {
+                    is IOException -> {
+                        _addressFail.value = true
+                        _error.value = R.string.error_failedToConnectNetwork
+                    }
+                    else -> {
+                        _addressFail.value = true
+                        _error.value = R.string.error_fatalNetwork
+                    }
                 }
                 it.printStackTrace()
             }
@@ -48,11 +57,17 @@ class LoginViewModel @Inject constructor(
 
             val search = addressSearch.value
             if (!search.isNullOrEmpty()) {
+                _addressFail.value = false
                 _addressFlow.value = addressRepository.getSearchedAddress(search, 20) {
-                    if (it is IOException) {
-                        _error.value = R.string.error_failedToConnectNetwork
-                    } else {
-                        _error.value = R.string.error_fatalNetwork
+                    when (it) {
+                        is IOException -> {
+                            _addressFail.value = true
+                            _error.value = R.string.error_failedToConnectNetwork
+                        }
+                        else -> {
+                            _addressFail.value = true
+                            _error.value = R.string.error_fatalNetwork
+                        }
                     }
                     it.printStackTrace()
                 }

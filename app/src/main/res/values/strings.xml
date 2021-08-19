@@ -6,7 +6,7 @@
     <!-- Error Messages -->
     <string name="error_permissionLocation">위치 권한이 꺼져있습니다.\n[권한] 설정에서 위치 권한을 허용해야 합니다.\n</string>
     <string name="error_failedToConnectNetwork">당근마켓 서비스에 연결할 수 없습니다. 네트워크 상태를 확인해주세요.</string>
-    <string name="error_fatalNetwork">예기치 않은 네트워크 장애가 발생했습니다. 다시 시도해주세요.</string>
+    <string name="error_fatalNetwork">예기치 않은 네트워크 오류가 발생했습니다. 다시 시도해주세요.</string>
 
     <!-- MainActivity -->
     <string name="activityMain_bottomNaviMenuTitleHome">홈</string>
@@ -24,7 +24,9 @@
     <string name="fragmentAddress_searchHint">내 동네 이름(동,읍,면)으로 검색</string>
     <string name="fragmentAddress_findCurrentLocation">현재 위치로 찾기</string>
     <string name="fragmentAddress_aroundTitle">근처동네</string>
-    <string name="fragmentAddress_addressEmptyDescription">현재 위치로 동네를 받아오지 못했습니다.\n내 동네 이름으로 검색해보세요!</string>
-    <string name="fragmentAddress_addressEmptyBtn">내 동네 이름 검색하기</string>
+    <string name="fragmentAddress_addressEmptyDescription">검색 결과가 없습니다.\n동네 이름을 다시 확인해주세요!</string>
+    <string name="fragmentAddress_addressEmptyBtn">동네 이름 다시 검색하기</string>
+    <string name="fragmentAddress_addressFailDescription">현재 위치로 동네를 받아오지 못했습니다.\n내 동네 이름으로 검색해보세요!</string>
+    <string name="fragmentAddress_addressFailBtn">내 동네 이름 검색하기</string>
 
 </resources>

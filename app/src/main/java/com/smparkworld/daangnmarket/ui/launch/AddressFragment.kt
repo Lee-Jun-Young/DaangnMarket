@@ -3,6 +3,7 @@ package com.smparkworld.daangnmarket.ui.launch
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import com.smparkworld.daangnmarket.extension.getLastLocation
@@ -70,11 +72,19 @@ class AddressFragment : Fragment() {
     }
 
     private fun initAddressList(list: RecyclerView) {
+
         loginViewModel.addressFlow.observe(viewLifecycleOwner) { flow ->
+
             viewLifecycleOwner.lifecycleScope.launch {
                 val adapter = AddressAdapter()
                 list.adapter = adapter
-                flow.collectLatest { adapter.submitData(it) }
+
+                adapter.addLoadStateListener {
+                    list.visibility = if (adapter.itemCount == 0) View.GONE else View.VISIBLE
+                }
+                flow.collectLatest {
+                    adapter.submitData(it)
+                }
             }
         }
         loadAroundAddress()

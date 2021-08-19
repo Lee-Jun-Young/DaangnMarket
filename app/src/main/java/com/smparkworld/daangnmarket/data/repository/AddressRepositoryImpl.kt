@@ -15,7 +15,7 @@ class AddressRepositoryImpl @Inject constructor(
     override suspend fun getAroundAddress(
             location: Location,
             pageSize: Int,
-            error: (Exception) -> Unit
+            error: suspend (Exception) -> Unit
     ) = withContext(Dispatchers.IO) {
 
         return@withContext Pager(
@@ -28,7 +28,7 @@ class AddressRepositoryImpl @Inject constructor(
     override suspend fun getSearchedAddress(
             search: String,
             pageSize: Int,
-            error: (Exception) -> Unit
+            error: suspend (Exception) -> Unit
     ) = withContext(Dispatchers.IO) {
 
         return@withContext Pager(
@@ -38,8 +38,5 @@ class AddressRepositoryImpl @Inject constructor(
         }.flow
     }
 
-    private fun refreshAccessToken() {
-
-    }
-
+    private fun refreshAccessToken() {}
 }

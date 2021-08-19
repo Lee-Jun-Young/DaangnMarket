@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface AddressRepository {
 
-    suspend fun getAroundAddress(location: Location, pageSize: Int, error: (Exception) -> Unit): Flow<PagingData<Address>>
+    suspend fun getAroundAddress(location: Location, pageSize: Int, error: suspend (Exception) -> Unit): Flow<PagingData<Address>>
 
-    suspend fun getSearchedAddress(search: String, pageSize: Int, error: (Exception) -> Unit): Flow<PagingData<Address>>
+    suspend fun getSearchedAddress(search: String, pageSize: Int, error: suspend (Exception) -> Unit): Flow<PagingData<Address>>
 }

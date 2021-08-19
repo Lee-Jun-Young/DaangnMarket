@@ -11,7 +11,7 @@ class AddressAroundPagingSource(
         private val remoteDataSource: AddressRemoteDataSource,
         private val location: Location,
         private val pageSize: Int,
-        private val error: (Exception) -> Unit
+        private val error: suspend (Exception) -> Unit
 ) : PagingSource<Int, Address>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Address> {
@@ -28,7 +28,7 @@ class AddressAroundPagingSource(
                             nextKey = body.nextPage
                     )
                 } else {
-                    throw NullPointerException("Body of Response is null.")
+                    throw NullPointerException("the response body is null.")
                 }
             } else {
                 throw HttpException(response)

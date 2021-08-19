@@ -8,7 +8,7 @@ import com.smparkworld.daangnmarket.databinding.ItemLaunchAddressBinding
 import com.smparkworld.daangnmarket.model.Address
 
 class AddressAdapter : PagingDataAdapter<Address, AddressAdapter.AddressViewHolder>(Address.DIFF_CALLBACK) {
-
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AddressViewHolder(
             ItemLaunchAddressBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
