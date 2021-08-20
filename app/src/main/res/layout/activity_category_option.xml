@@ -88,6 +88,7 @@
             android:textSize="@dimen/activityCategoryOption_contentTextSize" />
 
         <TextView
+            android:id="@+id/tv_secondSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/subTitleBackgroundColor"
@@ -97,12 +98,13 @@
             android:text="@string/activityCategoryOption_secondSubTitle"
             android:textColor="@color/black"
             android:textSize="@dimen/activityCategoryOption_subTitleTextSize"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryOption_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:overScrollMode="never"
             android:paddingStart="@dimen/activityCategoryOption_paddingStart"
             android:textColor="@color/black" />
     </LinearLayout>
