@@ -11,6 +11,7 @@ import com.google.android.material.chip.Chip
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.FragmentLifeBinding
+import com.smparkworld.daangnmarket.ui.main.addLife.AddLifeActivity
 import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryListActivity
 
 
@@ -38,10 +39,10 @@ class LifeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_addLife -> {
-
+            R.id.btn_moveAddLife -> {
+                startActivity(Intent(activity, AddLifeActivity::class.java))
             }
-            R.id.chip10 ->{
+            R.id.chip_categoryList ->{
                 startActivity(Intent(activity, CategoryListActivity::class.java))
             }
         }

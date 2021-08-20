@@ -17,4 +17,20 @@
     <dimen name="activityCategoryList_titleImageSize">24dp</dimen>
     <dimen name="activityCategoryList_titleTextSize">20dp</dimen>
     <dimen name="activityCategoryList_contentTextSize">18dp</dimen>
+
+    <!-- AddLifeActivity -->
+    <dimen name="activityAddLife_titleImageSize">24dp</dimen>
+    <dimen name="activityAddLife_titleTextSize">20dp</dimen>
+    <dimen name="activityAddLife_categoryOptionTextSize">14dp</dimen>
+    <dimen name="activityAddLife_contentTextSize">20dp</dimen>
+    <dimen name="activityAddLife_imageSize">28dp</dimen>
+    <dimen name="activityAddLife_titleMarginStart">15dp</dimen>
+    <dimen name="activityAddLife_categoryOptionPadding">20dp</dimen>
+    <dimen name="activityAddLife_categoryOptionImageMarginEnd">15dp</dimen>
+    <dimen name="activityAddLife_contentTextPaddingTopBottom">20dp</dimen>
+    <dimen name="activityAddLife_contentTextPaddingStartEnd">15dp</dimen>
+    <dimen name="activityAddLife_bottomLayoutPadding">15dp</dimen>
+    <dimen name="activityAddLife_bottomLayoutTextMarginStart">5dp</dimen>
+
+
 </resources>

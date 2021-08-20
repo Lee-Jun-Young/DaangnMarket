@@ -34,4 +34,10 @@
     <string name="activityCategoryList_select_snackBar_format">을/를 관심주제로 추가했어요</string>
     <string name="activityCategoryList_unselect_snackBar_format">을/를 관심주제에서 제외했어요</string>
 
+    <!-- AddLifeActivity -->
+    <string name="activityAddLife_titleText">동네생활 글쓰기</string>
+    <string name="activityAddLife_titleButtonText">완료</string>
+    <string name="activityAddLife_categoryOptionText">게시글의 주제를 선택해주세요</string>
+    <string name="activityAddLife_contentHintText">근처 이웃과 우리 동네 관련된 질문이나 \n이야기를 해보세요.</string>
+
 </resources>

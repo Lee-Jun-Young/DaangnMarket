@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.addLife.AddLifeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/life_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/activityAddLife_titleImageSize"
+                android:layout_height="@dimen/activityAddLife_titleImageSize"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activityAddLife_titleMarginStart"
+                android:layout_weight="1"
+                android:text="@string/activityAddLife_titleText"
+                android:textColor="@color/black"
+                android:textSize="@dimen/activityAddLife_titleTextSize" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_addLife"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activityAddLife_titleMarginStart"
+                android:background="@color/white"
+                android:enabled="false"
+                android:text="@string/activityAddLife_titleButtonText"
+                android:textSize="@dimen/activityCategoryList_titleTextSize" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#FFB8B7B7" />
+
+    <LinearLayout
+        android:id="@+id/ll_categoryOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/activityAddLife_categoryOptionPadding">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/activityAddLife_categoryOptionText"
+            android:textColor="@color/black"
+            android:textSize="@dimen/activityAddLife_categoryOptionTextSize" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activityAddLife_categoryOptionImageMarginEnd"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="#B8B7B7" />
+
+    <EditText
+        android:id="@+id/et_addLife"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="@string/activityAddLife_contentHintText"
+        android:paddingStart="@dimen/activityAddLife_contentTextPaddingStartEnd"
+        android:paddingTop="@dimen/activityAddLife_contentTextPaddingTopBottom"
+        android:paddingEnd="@dimen/activityAddLife_contentTextPaddingStartEnd"
+        android:paddingBottom="@dimen/activityAddLife_contentTextPaddingTopBottom"
+        android:textSize="@dimen/activityAddLife_contentTextSize" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#B8B7B7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/activityAddLife_bottomLayoutPadding">
+
+        <ImageView
+            android:id="@+id/iv_addLife_image"
+            android:layout_width="@dimen/activityAddLife_imageSize"
+            android:layout_height="@dimen/activityAddLife_imageSize"
+            android:src="@drawable/ic_life_add_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/activityAddLife_bottomLayoutTextMarginStart"
+            android:text="0/10"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/iv_addLife_location"
+            android:layout_width="@dimen/activityAddLife_imageSize"
+            android:layout_height="@dimen/activityAddLife_imageSize"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_life_add_location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/activityAddLife_bottomLayoutTextMarginStart"
+            android:text="0/1"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</LinearLayout>

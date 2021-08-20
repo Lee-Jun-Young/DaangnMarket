@@ -91,7 +91,7 @@
                             android:orientation="horizontal">
 
                             <com.google.android.material.chip.Chip
-                                android:id="@+id/chip10"
+                                android:id="@+id/chip_categoryList"
                                 style="@style/Widget.MaterialComponents.Chip.Action"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 </LinearLayout>
 
                 <ImageButton
-                    android:id="@+id/btn_addLife"
+                    android:id="@+id/btn_moveAddLife"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
                     android:layout_gravity="bottom|end"
