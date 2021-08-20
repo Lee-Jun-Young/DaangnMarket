@@ -40,4 +40,10 @@
     <string name="activityAddLife_categoryOptionText">게시글의 주제를 선택해주세요</string>
     <string name="activityAddLife_contentHintText">근처 이웃과 우리 동네 관련된 질문이나 \n이야기를 해보세요.</string>
 
+    <!-- CategoryOptionActivity -->
+    <string name="activityCategoryOption_titleText">주제 선택</string>
+    <string name="activityCategoryOption_firstSubTitle">기본 주제</string>
+    <string name="activityCategoryOption_firstSubTitle_firstText">우리동네질문</string>
+    <string name="activityCategoryOption_firstSubTitle_secondText">동네사건사고</string>
+    <string name="activityCategoryOption_secondSubTitle">내 관심 주제</string>
 </resources>

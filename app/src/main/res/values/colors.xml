@@ -11,4 +11,7 @@
     <color name="whiteGray">#f2f3f7</color>
 
     <color name="brandColor">#fe7e35</color>
+
+    <!-- CategoryOptionActivity -->
+    <color name="subTitleBackgroundColor">#EFF2F3</color>
 </resources>

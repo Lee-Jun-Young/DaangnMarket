@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DaangnMarket">
-        <activity android:name=".ui.main.addLife.AddLifeActivity"></activity>
+        <activity android:name=".ui.main.addLife.CategoryOptionActivity"></activity>
+        <activity android:name=".ui.main.addLife.AddLifeActivity" />
         <activity android:name=".ui.main.categoryList.CategoryListActivity" />
         <activity
             android:name=".ui.SplashActivity"

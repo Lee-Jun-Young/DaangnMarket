@@ -32,5 +32,14 @@
     <dimen name="activityAddLife_bottomLayoutPadding">15dp</dimen>
     <dimen name="activityAddLife_bottomLayoutTextMarginStart">5dp</dimen>
 
+    <!-- CategoryOptionsActivity -->
+    <dimen name="activityCategoryOption_titleTextSize">20dp</dimen>
+    <dimen name="activityCategoryOption_subTitleTextSize">14dp</dimen>
+    <dimen name="activityCategoryOption_contentTextSize">18dp</dimen>
+    <dimen name="activityCategoryOption_subTitlePaddingTopBottom">8dp</dimen>
+    <dimen name="activityCategoryOption_paddingStart">15dp</dimen>
+    <dimen name="activityCategoryOption_contentTextMarginTopBottom">8dp</dimen>
+    <dimen name="activityCategoryOption_contentTextPaddingTopBottom">15dp</dimen>
+
 
 </resources>

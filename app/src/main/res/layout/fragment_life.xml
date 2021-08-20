@@ -93,7 +93,7 @@
                             <com.google.android.material.chip.Chip
                                 android:id="@+id/chip_categoryList"
                                 style="@style/Widget.MaterialComponents.Chip.Action"
-                                android:layout_width="wrap_content"
+                                android:layout_width="32dp"
                                 android:layout_height="wrap_content"
                                 android:onClick="@{life::onClick}"
                                 app:chipIcon="@drawable/ic_list" />
