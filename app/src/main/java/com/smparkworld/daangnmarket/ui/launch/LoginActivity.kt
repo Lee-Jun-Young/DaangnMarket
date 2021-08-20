@@ -20,4 +20,18 @@ class LoginActivity : AppCompatActivity() {
                 .replace(R.id.fragmentContainer, AddressFragment())
                 .commitNow()
     }
+
+    fun nextStep() {
+        android.R.anim.slide_in_left
+        supportFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                        R.anim.translate_launch_swipe_next_enter,
+                        R.anim.translate_launch_swipe_next_exit,
+                        R.anim.translate_launch_swipe_back_enter,
+                        R.anim.translate_launch_swipe_back_exit,
+                )
+                .replace(R.id.fragmentContainer, AuthFragment())
+                .addToBackStack(null)
+                .commit()
+    }
 }

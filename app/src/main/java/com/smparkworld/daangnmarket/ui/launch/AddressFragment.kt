@@ -17,6 +17,7 @@ import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import com.smparkworld.daangnmarket.extension.getLastLocation
 import com.smparkworld.daangnmarket.extension.showRequestPermissionDialog
 import com.smparkworld.daangnmarket.extension.showSnackbar
+import com.smparkworld.daangnmarket.model.Address
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -60,12 +61,19 @@ class AddressFragment : Fragment() {
         }
     }
 
+    private fun onClickAddressItem(address: Address) {
+        loginViewModel.setSelectedAddress(address)
+        (requireActivity() as LoginActivity).nextStep()
+    }
+
     private fun loadAroundAddress() = getLastLocation { location ->
         loginViewModel.loadAroundAddress(location)
     }
 
     private fun initObserver() {
-        loginViewModel.error.observe(viewLifecycleOwner) { showSnackbar(it) }
+        loginViewModel.error.observe(viewLifecycleOwner) {
+            showSnackbar(it)
+        }
         loginViewModel.addressSearch.observe(viewLifecycleOwner) {
             loginViewModel.searchAddress()
         }
@@ -76,7 +84,7 @@ class AddressFragment : Fragment() {
         loginViewModel.addressFlow.observe(viewLifecycleOwner) { flow ->
 
             viewLifecycleOwner.lifecycleScope.launch {
-                val adapter = AddressAdapter()
+                val adapter = AddressAdapter(::onClickAddressItem)
                 list.adapter = adapter
 
                 adapter.addLoadStateListener {

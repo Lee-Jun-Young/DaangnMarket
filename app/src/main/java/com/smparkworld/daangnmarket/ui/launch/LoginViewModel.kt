@@ -29,6 +29,8 @@ class LoginViewModel @Inject constructor(
 
     val addressSearch = MutableLiveData<String>()
 
+    private lateinit var selectedAddress: Address
+
     fun loadAroundAddress(location: Location) {
 
         viewModelScope.launch {
@@ -73,5 +75,9 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun setSelectedAddress(address: Address) {
+        selectedAddress = address
     }
 }

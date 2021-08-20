@@ -2,16 +2,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="com.smparkworld.daangnmarket.model.Address"/>
+        <import type="kotlin.Unit"/>
         <variable
             name="address"
-            type="String" />
+            type="Address" />
+        <variable
+            name="onClick"
+            type="kotlin.jvm.functions.Function1&lt;Address, Unit>" />
     </data>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/fragmentAddress_marginLeftRight"
-        android:text="@{address}"
+        android:onClick="@{() -> onClick.invoke(address)}"
+        android:text="@{address.address}"
         android:textSize="@dimen/fragmentAddress_addressItemTextSize"
         android:textColor="@color/black"/>
 </layout>

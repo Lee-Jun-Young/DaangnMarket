@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.ItemLaunchAddressBinding
 import com.smparkworld.daangnmarket.model.Address
 
-class AddressAdapter : PagingDataAdapter<Address, AddressAdapter.AddressViewHolder>(Address.DIFF_CALLBACK) {
+class AddressAdapter(
+        private val onClick: (Address) -> Unit
+) : PagingDataAdapter<Address, AddressAdapter.AddressViewHolder>(Address.DIFF_CALLBACK) {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AddressViewHolder(
-            ItemLaunchAddressBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemLaunchAddressBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+            ), onClick
     )
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
@@ -21,11 +25,13 @@ class AddressAdapter : PagingDataAdapter<Address, AddressAdapter.AddressViewHold
     }
 
     class AddressViewHolder(
-            private val binding: ItemLaunchAddressBinding
+            private val binding: ItemLaunchAddressBinding,
+            private val onClick: (Address) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(address: Address) {
-            binding.address = address.address
+            binding.address = address
+            binding.onClick = onClick
             binding.executePendingBindings()
         }
     }
