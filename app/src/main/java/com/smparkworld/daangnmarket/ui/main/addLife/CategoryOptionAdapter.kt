@@ -32,7 +32,6 @@ class CategoryOptionAdapter(
             }
             (context as Activity).setResult(RESULT_OK, intent)
             (context as Activity).finish()
-
         }
     }
 

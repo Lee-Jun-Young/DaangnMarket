@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaangnMarket">
         <activity android:name=".ui.main.addLife.CategoryOptionActivity"></activity>
-        <activity android:name=".ui.main.addLife.AddLifeActivity" />
+        <activity android:name=".ui.main.addLife.AddLifeActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.main.categoryList.CategoryListActivity" />
         <activity
             android:name=".ui.SplashActivity"
