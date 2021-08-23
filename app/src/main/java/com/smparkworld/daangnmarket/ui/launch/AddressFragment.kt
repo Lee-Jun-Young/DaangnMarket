@@ -3,7 +3,6 @@ package com.smparkworld.daangnmarket.ui.launch
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import com.smparkworld.daangnmarket.extension.getLastLocation
@@ -32,6 +30,11 @@ class AddressFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (requireActivity() as LoginActivity).loginComponent.inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadAroundAddress()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -95,6 +98,5 @@ class AddressFragment : Fragment() {
                 }
             }
         }
-        loadAroundAddress()
     }
 }

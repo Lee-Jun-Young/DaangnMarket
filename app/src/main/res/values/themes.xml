@@ -7,6 +7,7 @@
         <item name="colorPrimary">@color/brandColor</item>
         <item name="colorPrimaryVariant">@color/whiteGray</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlHighlight">@color/whiteGray</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/brandColor</item>

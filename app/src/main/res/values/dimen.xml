@@ -33,4 +33,10 @@
     <dimen name="fragmentAddress_addressFailDescriptionMarginTop">15dp</dimen>
     <dimen name="fragmentAddress_addressFailDescriptionTextSize">18dp</dimen>
     <dimen name="fragmentAddress_addressFailBtnMarginTop">15dp</dimen>
+
+    <!-- AuthFragment -->
+    <dimen name="fragmentAuth_elevation">7dp</dimen>
+    <dimen name="fragmentAuth_contentPadding">15dp</dimen>
+    <dimen name="fragmentAuth_inputPadding">10dp</dimen>
+    <dimen name="fragmentAuth_authBtnTextSize">17dp</dimen>
 </resources>

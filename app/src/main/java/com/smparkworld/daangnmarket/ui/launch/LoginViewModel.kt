@@ -1,6 +1,7 @@
 package com.smparkworld.daangnmarket.ui.launch
 
 import android.location.Location
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,8 @@ class LoginViewModel @Inject constructor(
     val addressFail: LiveData<Boolean> = _addressFail
 
     val addressSearch = MutableLiveData<String>()
+
+    val phoneNumber = MutableLiveData<String>()
 
     private lateinit var selectedAddress: Address
 

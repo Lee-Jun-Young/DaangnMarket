@@ -16,8 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/fragmentAddress_marginLeftRight"
+        android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> onClick.invoke(address)}"
         android:text="@{address.address}"
         android:textSize="@dimen/fragmentAddress_addressItemTextSize"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black" />
 </layout>
