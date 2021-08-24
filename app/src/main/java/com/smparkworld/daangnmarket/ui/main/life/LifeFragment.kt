@@ -42,11 +42,6 @@ class LifeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_moveAddLife -> {
-                val tempData: String? = DaangnApp.prefs.getData("id","N")
-                if(tempData.equals("Y")){
-                    Log.d("test!!", "임시저장데이터있음")
-                }else
-                    Log.d("test!!", "임시저장데이터없음")
                 startActivity(Intent(activity, AddLifeActivity::class.java))
             }
             R.id.chip_categoryList ->{
@@ -58,8 +53,6 @@ class LifeFragment : Fragment(), View.OnClickListener {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setChipGroup() {
         val totalValue: MutableMap<String, *>? = DaangnApp.prefs.getAll()
-        val totalData: MutableMap<String, *>? = DaangnApp.prefs.getAllData()
-        Log.d("test!!"," data : ${totalData.toString()}")
 
         totalValue?.forEach { (name, value) ->
             if (value as Boolean) {

@@ -46,4 +46,10 @@
     <string name="activityCategoryOption_firstSubTitle_firstText">우리동네질문</string>
     <string name="activityCategoryOption_firstSubTitle_secondText">동네사건사고</string>
     <string name="activityCategoryOption_secondSubTitle">내 관심 주제</string>
+
+    <!-- AddLifeCustomDialog -->
+    <string name="addLife_customDialogContentText">임시 저장된 게시글이 있습니다. \n이어서 게시글을 작성하시겠어요?</string>
+    <string name="addLife_customDialogPositiveButtonText">네, 이어서 작성할래요.</string>
+    <string name="addLife_customDialogNegativeButtonText">아니요, 새로 작성할래요.</string>
+
 </resources>

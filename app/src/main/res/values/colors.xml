@@ -14,4 +14,8 @@
 
     <!-- CategoryOptionActivity -->
     <color name="subTitleBackgroundColor">#EFF2F3</color>
+
+    <!-- AddLifeCustomDialog -->
+    <color name="addLifeCustomDialogColor">#FF3D00</color>
+
 </resources>
