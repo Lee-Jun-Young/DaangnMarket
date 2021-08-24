@@ -7,11 +7,14 @@ import android.location.Location
 import android.net.Uri
 import android.provider.Settings
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.location.LocationServices
@@ -55,6 +58,15 @@ fun Fragment.getLastLocation(
             .addOnSuccessListener { success(it) }
             .addOnFailureListener { it.printStackTrace() }
     return true
+}
+
+fun Fragment.setKeyboard(show: Boolean, focus: EditText) {
+    val imm = requireActivity().getSystemService<InputMethodManager>()
+    if (show) {
+        imm?.showSoftInput(focus, 0)
+    } else {
+        imm?.hideSoftInputFromWindow(focus.windowToken, 0);
+    }
 }
 
 fun Fragment.showSnackbar(id: Int) {

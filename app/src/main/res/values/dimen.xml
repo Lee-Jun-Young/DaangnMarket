@@ -38,5 +38,8 @@
     <dimen name="fragmentAuth_elevation">7dp</dimen>
     <dimen name="fragmentAuth_contentPadding">15dp</dimen>
     <dimen name="fragmentAuth_inputPadding">10dp</dimen>
+    <dimen name="fragmentAuth_inputTextSize">19dp</dimen>
     <dimen name="fragmentAuth_authBtnTextSize">17dp</dimen>
+    <dimen name="fragmentAuth_findByEmailPadding">5dp</dimen>
+    <dimen name="fragmentAuth_securityNumDescriptionMarginTop">5dp</dimen>
 </resources>

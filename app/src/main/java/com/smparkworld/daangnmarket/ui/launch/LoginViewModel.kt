@@ -1,7 +1,6 @@
 package com.smparkworld.daangnmarket.ui.launch
 
 import android.location.Location
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,11 +12,16 @@ import com.smparkworld.daangnmarket.model.Address
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
+import kotlin.concurrent.timer
 
 class LoginViewModel @Inject constructor(
         private val addressRepository: AddressRepository
 ) : ViewModel() {
+
+    private val _sign = MutableLiveData<Boolean>()
+    val sign: LiveData<Boolean> = _sign
 
     private val _error = MutableLiveData<Int>()
     val error: LiveData<Int> = _error
@@ -28,9 +32,16 @@ class LoginViewModel @Inject constructor(
     private val _addressFail = MutableLiveData<Boolean>()
     val addressFail: LiveData<Boolean> = _addressFail
 
+    private val _authTimer = MutableLiveData<String>()
+    val authTimer: LiveData<String> = _authTimer
+
+    private var timer: Timer? = null
+
     val addressSearch = MutableLiveData<String>()
 
     val phoneNumber = MutableLiveData<String>()
+
+    val securityNumber = MutableLiveData<String>()
 
     private lateinit var selectedAddress: Address
 
@@ -82,5 +93,41 @@ class LoginViewModel @Inject constructor(
 
     fun setSelectedAddress(address: Address) {
         selectedAddress = address
+    }
+
+    fun authorization() {
+        viewModelScope.launch {
+            startTimer()
+
+            /* SMS 발송 기능 구현 하는 곳 */
+        }
+    }
+
+    fun confirmSecurityNumber() {
+        viewModelScope.launch {
+            
+            /* 인증번호 확인 기능 구현 하는 곳, 임시로 0000일 경우 인증 성공 */
+            if (securityNumber.value == "0000" && authTimer.value?.equals("00:00") == false) {
+                timer?.cancel()
+
+                _sign.value = true
+            } else {
+                _error.value = R.string.fragmentAuth_failedToAuthorization
+            }
+        }
+    }
+
+    private fun startTimer() {
+        _authTimer.value = "05:00"
+
+        var time = 300
+        timer?.cancel()
+        timer = timer(period = 1000) {
+            if (--time >= 0) {
+                _authTimer.postValue("${String.format("%02d", time / 60)}:${String.format("%02d", time % 60)}")
+            } else {
+                cancel()
+            }
+        }
     }
 }

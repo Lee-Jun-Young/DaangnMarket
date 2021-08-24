@@ -1,10 +1,12 @@
 package com.smparkworld.daangnmarket.ui.launch
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.ui.launch.di.LoginComponent
+import com.smparkworld.daangnmarket.ui.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,5 +35,13 @@ class LoginActivity : AppCompatActivity() {
                 .replace(R.id.fragmentContainer, AuthFragment())
                 .addToBackStack(null)
                 .commit()
+    }
+
+    fun successSign() {
+        Intent(this, MainActivity::class.java).let {
+            it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(it)
+        }
     }
 }

@@ -10,3 +10,18 @@ data class UserRefreshResponse(
     @SerializedName("expiredIn")
     var expiredIn: String
 )
+
+data class UserSignResponse(
+
+    @SerializedName("accessToken")
+    var accessToken: String,
+
+    @SerializedName("expiredIn")
+    var expiredIn: String,
+
+    @SerializedName("refreshToken")
+    var refreshToken: String,
+
+    @SerializedName("refreshToken_expiredIn")
+    var refreshTokenExpiredIn: String,
+)
