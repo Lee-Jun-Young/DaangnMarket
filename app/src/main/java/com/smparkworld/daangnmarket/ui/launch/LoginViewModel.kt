@@ -1,6 +1,7 @@
 package com.smparkworld.daangnmarket.ui.launch
 
 import android.location.Location
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -116,7 +117,10 @@ class LoginViewModel @Inject constructor(
             /* 인증번호 확인 기능 구현 하는 곳, 임시로 0000일 경우 인증 성공 */
             if (securityNumber.value == "0000" && authTimer.value?.equals("00:00") == false) {
 
-                val result = userRepository.signUp(phoneNumber.value!!, selectedAddress.value!!.id)
+                val phone = phoneNumber.value!!.replace(" ", "")
+                val address = selectedAddress.value!!.id
+
+                val result = userRepository.login(phone, address)
                 if (result is Success) {
                     timer?.cancel()
                     _login.value = result.data

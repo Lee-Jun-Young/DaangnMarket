@@ -6,7 +6,7 @@ import retrofit2.Response
 
 interface UserRemoteDataSource {
 
-    suspend fun signUp(phone: String, address: Int): Response<UserLoginResponse>
+    suspend fun login(phone: String, address: Int): Response<UserLoginResponse>
 
     suspend fun refresh(refreshToken: String): Response<UserRefreshResponse>
 }

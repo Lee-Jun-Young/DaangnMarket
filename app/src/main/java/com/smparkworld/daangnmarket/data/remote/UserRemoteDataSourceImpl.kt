@@ -9,11 +9,11 @@ class UserRemoteDataSourceImpl @Inject constructor(
         private val userApi: UserApi
 ) : UserRemoteDataSource {
 
-    override suspend fun signUp(
+    override suspend fun login(
             phone: String,
             address: Int
     ) = withContext(Dispatchers.IO) {
-        userApi.signUp(phone, address)
+        userApi.login(phone, address)
     }
 
     override suspend fun refresh(

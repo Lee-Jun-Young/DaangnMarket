@@ -14,13 +14,13 @@ class UserRepositoryImpl @Inject constructor(
         private val remoteDataSource: UserRemoteDataSource
 ) : UserRepository {
 
-    override suspend fun signUp(
+    override suspend fun login(
             phone: String,
             address: Int
     ) = withContext(Dispatchers.IO) {
 
         try {
-            val response = remoteDataSource.signUp(phone, address)
+            val response = remoteDataSource.login(phone, address)
             if (response.isSuccessful) {
 
                 val body = response.body()

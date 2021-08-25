@@ -8,7 +8,7 @@ interface UserApi {
 
     @FormUrlEncoded
     @POST("/user/login")
-    suspend fun signUp(
+    suspend fun login(
             @Field("phone") phone: String,
             @Field("address") address: Int
     ): Response<UserLoginResponse>
