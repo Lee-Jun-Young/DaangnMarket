@@ -7,11 +7,11 @@ import retrofit2.http.*
 interface UserApi {
 
     @FormUrlEncoded
-    @POST("/user/sign")
+    @POST("/user/login")
     suspend fun signUp(
             @Field("phone") phone: String,
             @Field("address") address: Int
-    ): Response<UserSignResponse>
+    ): Response<UserLoginResponse>
 
     @POST("/user/refresh")
     suspend fun refreshToken(

@@ -11,7 +11,7 @@ data class UserRefreshResponse(
     var expiredIn: String
 )
 
-data class UserSignResponse(
+data class UserLoginResponse(
 
     @SerializedName("existing")
     var existing: Boolean,
