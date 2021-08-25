@@ -2,6 +2,7 @@ package com.smparkworld.daangnmarket.di
 
 import android.content.SharedPreferences
 import com.smparkworld.daangnmarket.data.remote.api.AddressApi
+import com.smparkworld.daangnmarket.data.remote.api.UserApi
 import com.smparkworld.daangnmarket.di.AppModule.AppPref
 import com.smparkworld.daangnmarket.utils.PreferencesKey.USER_ACCESS_TOKEN
 import com.smparkworld.daangnmarket.utils.RsaCipherHelper
@@ -43,4 +44,10 @@ object NetworkModule {
     @Singleton
     fun provideAddressApi(@AppPref pref: SharedPreferences): AddressApi =
             getRetrofit(pref).create(AddressApi::class.java)
+
+    @Provides
+    @JvmStatic
+    @Singleton
+    fun provideUserApi(@AppPref pref: SharedPreferences): UserApi =
+            getRetrofit(pref).create(UserApi::class.java)
 }

@@ -8,7 +8,7 @@ interface UserApi {
 
     @FormUrlEncoded
     @POST("/user/sign")
-    suspend fun sign(
+    suspend fun signUp(
             @Field("phone") phone: String,
             @Field("address") address: Int
     ): Response<UserSignResponse>

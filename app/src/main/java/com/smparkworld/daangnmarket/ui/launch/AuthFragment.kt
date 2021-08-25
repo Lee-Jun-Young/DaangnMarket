@@ -1,9 +1,5 @@
 package com.smparkworld.daangnmarket.ui.launch
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -12,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -46,7 +41,6 @@ class AuthFragment : Fragment() {
             vm = loginViewModel
             onClick = ::onClick
 
-            initObserver()
             initToolbar(toolbar)
             initPhoneNumberLimit(etPhoneNumber)
         }
@@ -89,13 +83,6 @@ class AuthFragment : Fragment() {
         binding.btnAuth.setText(R.string.fragmentAuth_authRetryBtn)
         binding.tvFindByEmail.visibility = View.GONE
         binding.llSecurityNum.visibility = View.VISIBLE
-    }
-
-    private fun initObserver() {
-        loginViewModel.error.observe(viewLifecycleOwner) { showSnackbar(it)}
-        loginViewModel.sign.observe(viewLifecycleOwner) {
-            if (it) (requireActivity() as LoginActivity).successSign()
-        }
     }
 
     private fun initToolbar(toolbar: Toolbar) {

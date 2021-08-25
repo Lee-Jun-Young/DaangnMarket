@@ -7,6 +7,7 @@ import android.location.Location
 import android.net.Uri
 import android.provider.Settings
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
@@ -75,4 +76,12 @@ fun Fragment.showSnackbar(id: Int) {
         return
     }
     Toast.makeText(requireContext(), id, Toast.LENGTH_SHORT).show()
+}
+
+fun AppCompatActivity.showSnackbar(id: Int) {
+    Snackbar.make(
+            (window.findViewById(android.R.id.content) as ViewGroup).getChildAt(0),
+            id,
+            Snackbar.LENGTH_SHORT
+    ).show()
 }

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import com.smparkworld.daangnmarket.extension.getLastLocation
 import com.smparkworld.daangnmarket.extension.showRequestPermissionDialog
-import com.smparkworld.daangnmarket.extension.showSnackbar
 import com.smparkworld.daangnmarket.model.Address
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -66,7 +65,6 @@ class AddressFragment : Fragment() {
 
     private fun onClickAddressItem(address: Address) {
         loginViewModel.setSelectedAddress(address)
-        (requireActivity() as LoginActivity).nextStep()
     }
 
     private fun loadAroundAddress() = getLastLocation { location ->
@@ -74,9 +72,6 @@ class AddressFragment : Fragment() {
     }
 
     private fun initObserver() {
-        loginViewModel.error.observe(viewLifecycleOwner) {
-            showSnackbar(it)
-        }
         loginViewModel.addressSearch.observe(viewLifecycleOwner) {
             loginViewModel.searchAddress()
         }

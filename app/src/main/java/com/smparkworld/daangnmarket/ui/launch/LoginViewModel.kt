@@ -8,7 +8,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.data.repository.AddressRepository
+import com.smparkworld.daangnmarket.data.repository.UserRepository
 import com.smparkworld.daangnmarket.model.Address
+import com.smparkworld.daangnmarket.model.Result.Success
+import com.smparkworld.daangnmarket.model.Result.Error
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -17,11 +20,13 @@ import javax.inject.Inject
 import kotlin.concurrent.timer
 
 class LoginViewModel @Inject constructor(
+        private val userRepository: UserRepository,
         private val addressRepository: AddressRepository
 ) : ViewModel() {
 
-    private val _sign = MutableLiveData<Boolean>()
-    val sign: LiveData<Boolean> = _sign
+    // true면 처음 회원가입한 유저, false면 소유권 확인해야 하는 유저.
+    private val _login = MutableLiveData<Boolean>()
+    val login: LiveData<Boolean> = _login
 
     private val _error = MutableLiveData<Int>()
     val error: LiveData<Int> = _error
@@ -31,6 +36,9 @@ class LoginViewModel @Inject constructor(
 
     private val _addressFail = MutableLiveData<Boolean>()
     val addressFail: LiveData<Boolean> = _addressFail
+
+    private val _selectedAddress = MutableLiveData<Address>()
+    val selectedAddress: LiveData<Address> = _selectedAddress
 
     private val _authTimer = MutableLiveData<String>()
     val authTimer: LiveData<String> = _authTimer
@@ -43,7 +51,6 @@ class LoginViewModel @Inject constructor(
 
     val securityNumber = MutableLiveData<String>()
 
-    private lateinit var selectedAddress: Address
 
     fun loadAroundAddress(location: Location) {
 
@@ -92,7 +99,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun setSelectedAddress(address: Address) {
-        selectedAddress = address
+        _selectedAddress.value = address
     }
 
     fun authorization() {
@@ -105,12 +112,18 @@ class LoginViewModel @Inject constructor(
 
     fun confirmSecurityNumber() {
         viewModelScope.launch {
-            
+
             /* 인증번호 확인 기능 구현 하는 곳, 임시로 0000일 경우 인증 성공 */
             if (securityNumber.value == "0000" && authTimer.value?.equals("00:00") == false) {
-                timer?.cancel()
 
-                _sign.value = true
+                val result = userRepository.signUp(phoneNumber.value!!, selectedAddress.value!!.id)
+                if (result is Success) {
+                    timer?.cancel()
+                    _login.value = result.data
+                } else {
+                    (result as Error).printStackTrace()
+                    _error.value = R.string.error_failedToConnectNetwork
+                }
             } else {
                 _error.value = R.string.fragmentAuth_failedToAuthorization
             }

@@ -13,6 +13,9 @@ data class UserRefreshResponse(
 
 data class UserSignResponse(
 
+    @SerializedName("existing")
+    var existing: Boolean,
+
     @SerializedName("accessToken")
     var accessToken: String,
 
