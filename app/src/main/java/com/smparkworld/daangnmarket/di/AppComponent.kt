@@ -2,6 +2,7 @@ package com.smparkworld.daangnmarket.di
 
 import android.content.Context
 import com.smparkworld.daangnmarket.ui.launch.di.LoginComponent
+import com.smparkworld.daangnmarket.ui.splash.di.SplashComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -21,4 +22,5 @@ interface AppComponent {
     }
 
     fun loginComponent(): LoginComponent.Factory
+    fun splashComponent(): SplashComponent.Factory
 }

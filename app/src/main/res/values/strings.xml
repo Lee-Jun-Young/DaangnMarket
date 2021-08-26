@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">당근마켓</string>
-    <string name="app_pref_name">app_info</string>
-    <string name="user_pref_name">user_setting_info</string>
 
     <!-- Error Messages -->
     <string name="error_notYet">구현이 안 된 부분이에요! 다음에 공부해보겠습니다 : )</string>
@@ -43,6 +41,6 @@
     <string name="fragmentAuth_securityNumHint">인증번호를 입력해주세요</string>
     <string name="fragmentAuth_securityNumDescription">어떤 경우에도 타인에게 공유하지 마세요!</string>
     <string name="fragmentAuth_securityBtn">인증번호 확인</string>
-    <string name="fragmentAuth_authRetryNotYet">인증번호 발송 후 20초 이내로 다시 보낼 수 없습니다. 잠시 후에 시도해주세요.</string>
+    <string name="fragmentAuth_authRetryNotYet">20초 이내에는 인증문자를 다시 전송할 수 없습니다.</string>
     <string name="fragmentAuth_failedToAuthorization">전화번호 인증에 실패했어요 : (</string>
 </resources>

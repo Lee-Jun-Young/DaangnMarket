@@ -2,6 +2,7 @@ package com.smparkworld.daangnmarket.data.repository
 
 import com.smparkworld.daangnmarket.data.local.UserLocalDataSource
 import com.smparkworld.daangnmarket.data.remote.UserRemoteDataSource
+import com.smparkworld.daangnmarket.model.Result
 import com.smparkworld.daangnmarket.model.Result.Success
 import com.smparkworld.daangnmarket.model.Result.Error
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,31 @@ class UserRepositoryImpl @Inject constructor(
             }
         } catch(e: Exception) {
             return@withContext Error(e)
+        }
+    }
+
+    override suspend fun loginWithToken(): Result<Boolean> {
+
+        return withContext(Dispatchers.IO) {
+
+            try {
+                val response = remoteDataSource.loginWithToken()
+                if (response.isSuccessful) {
+
+                    val body = response.body()
+                    if (body != null) {
+                        localDataSource.saveAccessToken(body.accessToken, body.expiredIn)
+                        localDataSource.saveRefreshToken(body.refreshToken, body.refreshTokenExpiredIn)
+                        return@withContext Success(true)
+                    } else {
+                        throw NullPointerException("the response body is null.")
+                    }
+                } else {
+                    throw HttpException(response)
+                }
+            } catch(e: Exception) {
+                return@withContext Error(e)
+            }
         }
     }
 }

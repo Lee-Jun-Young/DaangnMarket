@@ -37,6 +37,4 @@ class AddressRepositoryImpl @Inject constructor(
             AddressSearchPagingSource(remoteDataSource, search, pageSize, error)
         }.flow
     }
-
-    private fun refreshAccessToken() {}
 }

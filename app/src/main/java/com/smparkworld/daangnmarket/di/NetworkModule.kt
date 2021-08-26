@@ -1,53 +1,58 @@
 package com.smparkworld.daangnmarket.di
 
 import android.content.SharedPreferences
+import com.smparkworld.daangnmarket.BuildConfig
 import com.smparkworld.daangnmarket.data.remote.api.AddressApi
 import com.smparkworld.daangnmarket.data.remote.api.UserApi
-import com.smparkworld.daangnmarket.di.AppModule.AppPref
-import com.smparkworld.daangnmarket.utils.PreferencesKey.USER_ACCESS_TOKEN
-import com.smparkworld.daangnmarket.utils.RsaCipherHelper
+import com.smparkworld.daangnmarket.utils.TokenAuthenticator
 import dagger.Module
 import dagger.Provides
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import com.smparkworld.daangnmarket.di.AppModule.AppPref
+import com.smparkworld.daangnmarket.utils.PreferencesKey
+import com.smparkworld.daangnmarket.utils.RsaCipherHelper
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 object NetworkModule {
 
-    private const val BASE_URL = "http://smparkworld.com:3001/"
-    const val TOKEN_KEY = "X-AUTH-TOKEN"
-
-    private fun getClient(token: String?) : OkHttpClient {
+    private fun getClient(
+        pref: SharedPreferences,
+        authenticator: Authenticator
+    ): OkHttpClient {
+        val token = pref.getString(PreferencesKey.USER_ACCESS_TOKEN, null)?.run {
+            RsaCipherHelper.decrypt(this)
+        }
         val interceptor = Interceptor { chain ->
-            val url = chain.request().url().newBuilder().addQueryParameter(TOKEN_KEY, token).build()
-            val req = chain.request().newBuilder().url(url).build()
-            chain.proceed(req)
+            chain.proceed(chain.request().newBuilder().addHeader(BuildConfig.TOKEN_KEY, token).build())
         }
-        return OkHttpClient().newBuilder().addInterceptor(interceptor).build()
+        return OkHttpClient().newBuilder().run {
+            if (token != null) addInterceptor(interceptor)
+            authenticator(authenticator)
+            build()
+        }
     }
 
-    private fun getRetrofit(pref: SharedPreferences): Retrofit {
-        val accessToken = pref.getString(USER_ACCESS_TOKEN, null)?.let {
-            RsaCipherHelper.decrypt(it)
-        }
-        return Retrofit.Builder().client(getClient(accessToken))
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-    }
 
     @Provides
     @JvmStatic
-    @Singleton
-    fun provideAddressApi(@AppPref pref: SharedPreferences): AddressApi =
-            getRetrofit(pref).create(AddressApi::class.java)
+    fun provideRetrofit(
+        @AppPref pref: SharedPreferences,
+        authenticator: TokenAuthenticator
+    ): Retrofit =
+            Retrofit.Builder().client(getClient(pref, authenticator))
+                    .baseUrl(BuildConfig.SERVER_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
 
     @Provides
     @JvmStatic
-    @Singleton
-    fun provideUserApi(@AppPref pref: SharedPreferences): UserApi =
-            getRetrofit(pref).create(UserApi::class.java)
+    fun provideAddressApi(retrofit: Retrofit): AddressApi =
+            retrofit.create(AddressApi::class.java)
+
+    @Provides
+    @JvmStatic
+    fun provideUserApi(retrofit: Retrofit): UserApi =
+            retrofit.create(UserApi::class.java)
 }

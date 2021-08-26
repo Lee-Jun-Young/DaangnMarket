@@ -1,6 +1,7 @@
 package com.smparkworld.daangnmarket.di
 
 import android.content.Context
+import com.smparkworld.daangnmarket.BuildConfig
 import com.smparkworld.daangnmarket.R
 import dagger.Module
 import dagger.Provides
@@ -23,7 +24,7 @@ object AppModule {
     @Singleton
     @AppPref
     fun provideAppPref(applicationContext: Context) = applicationContext.getSharedPreferences(
-                applicationContext.getString(R.string.app_pref_name), Context.MODE_PRIVATE
+                BuildConfig.PREF_NAME_APP, Context.MODE_PRIVATE
     )
 
     @Provides
@@ -31,7 +32,7 @@ object AppModule {
     @Singleton
     @UserPref
     fun provideUserPref(applicationContext: Context) = applicationContext.getSharedPreferences(
-                applicationContext.getString(R.string.user_pref_name), Context.MODE_PRIVATE
+                BuildConfig.PREF_NAME_APP, Context.MODE_PRIVATE
     )
 
 }

@@ -25,4 +25,10 @@ class UserLocalDataSourceImpl @Inject constructor(
             apply()
         }
     }
+
+    override suspend fun getRefreshToken(): String? {
+        return pref.getString(PreferencesKey.USER_REFRESH_TOKEN, null)?.let {
+            RsaCipherHelper.decrypt(it)
+        }
+    }
 }

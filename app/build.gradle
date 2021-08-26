@@ -16,6 +16,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SERVER_URL", '"http://smparkworld.com:3001/"')
+        buildConfigField("String", "TOKEN_KEY", '"X-AUTH-TOKEN"')
+        buildConfigField("String", "PREF_NAME_APP", '"app_info"')
+        buildConfigField("String", "PREF_NAME_USER", '"user_setting_info"')
     }
 
     buildTypes {
