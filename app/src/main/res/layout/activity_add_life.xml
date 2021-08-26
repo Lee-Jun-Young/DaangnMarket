@@ -52,8 +52,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activityAddLife_titleMarginStart"
                     android:background="@color/white"
-                    android:enabled="false"
                     android:text="@string/activityAddLife_titleButtonText"
+                    android:onClick="@{addLife::onClick}"
                     android:textSize="@dimen/activityCategoryList_titleTextSize" />
 
             </LinearLayout>
@@ -98,6 +98,12 @@
             android:layout_marginEnd="15dp"
             android:background="#B8B7B7" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/imageRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+
         <EditText
             android:id="@+id/et_addLife"
             android:layout_width="match_parent"
@@ -127,9 +133,11 @@
                 android:id="@+id/iv_addLife_image"
                 android:layout_width="@dimen/activityAddLife_imageSize"
                 android:layout_height="@dimen/activityAddLife_imageSize"
+                android:onClick="@{addLife::onClick}"
                 android:src="@drawable/ic_life_add_image" />
 
             <TextView
+                android:id="@+id/tv_cntImages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
