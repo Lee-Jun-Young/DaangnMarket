@@ -13,10 +13,3 @@ fun onAction(view: EditText, done: Function0<Unit>) {
         return@setOnEditorActionListener false
     }
 }
-
-@BindingAdapter("divideLine")
-fun divideLine(view: RecyclerView, visible: Boolean) {
-    if (visible) {
-        view.addItemDecoration(DividerItemDecoration(view.context, VERTICAL))
-    }
-}

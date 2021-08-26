@@ -22,6 +22,8 @@
     <dimen name="fragmentAddress_findCurrentLocationTextSize">15dp</dimen>
     <dimen name="fragmentAddress_aroundAddressMarginTop">30dp</dimen>
     <dimen name="fragmentAddress_aroundAddressTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressHeaderPadding">15dp</dimen>
+    <dimen name="fragmentAddress_addressHeaderTextSize">15dp</dimen>
     <dimen name="fragmentAddress_addressItemTextSize">15dp</dimen>
     <dimen name="fragmentAddress_addressEmptyImg">60dp</dimen>
     <dimen name="fragmentAddress_addressEmptyImgMarginBottom">40dp</dimen>

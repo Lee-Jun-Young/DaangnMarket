@@ -99,7 +99,6 @@
                 android:overScrollMode="never"
                 android:scrollbars="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:divideLine="@{true}"
                 tools:listitem="@layout/item_launch_address" />
 
             <!-- Error Layout -->

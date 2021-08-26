@@ -7,13 +7,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.insertHeaderItem
+import androidx.paging.map
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.data.repository.AddressRepository
 import com.smparkworld.daangnmarket.data.repository.UserRepository
 import com.smparkworld.daangnmarket.model.Address
+import com.smparkworld.daangnmarket.model.AddressModel
 import com.smparkworld.daangnmarket.model.Result.Success
 import com.smparkworld.daangnmarket.model.Result.Error
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.*
@@ -32,8 +36,8 @@ class LoginViewModel @Inject constructor(
     private val _error = MutableLiveData<Int>()
     val error: LiveData<Int> = _error
 
-    private val _addressFlow = MutableLiveData<Flow<PagingData<Address>>>()
-    val addressFlow: LiveData<Flow<PagingData<Address>>> = _addressFlow
+    private val _addressFlow = MutableLiveData<Flow<PagingData<AddressModel>>>()
+    val addressFlow: LiveData<Flow<PagingData<AddressModel>>> = _addressFlow
 
     private val _addressFail = MutableLiveData<Boolean>()
     val addressFail: LiveData<Boolean> = _addressFail
