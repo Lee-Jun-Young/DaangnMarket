@@ -11,13 +11,11 @@ interface AddressRepository {
 
     suspend fun getAroundAddress(
         location: Location,
-        pageSize: Int,
-        error: suspend (Exception) -> Unit
+        pageSize: Int
     ): Flow<PagingData<AddressModel>>
 
     suspend fun getSearchedAddress(
         search: String,
-        pageSize: Int,
-        error: suspend (Exception) -> Unit
+        pageSize: Int
     ): Flow<PagingData<AddressModel>>
 }

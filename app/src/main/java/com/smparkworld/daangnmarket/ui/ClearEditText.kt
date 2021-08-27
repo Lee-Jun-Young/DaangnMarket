@@ -2,7 +2,6 @@ package com.smparkworld.daangnmarket.ui
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.text.Editable
@@ -13,7 +12,6 @@ import android.view.View
 import android.view.View.OnTouchListener
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginRight
 
 import com.smparkworld.daangnmarket.R
 

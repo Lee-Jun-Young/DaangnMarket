@@ -11,4 +11,5 @@
     <color name="whiteGray">#f2f3f7</color>
 
     <color name="brandColor">#fe7e35</color>
+    <color name="opaqueGray">#44000000</color>
 </resources>

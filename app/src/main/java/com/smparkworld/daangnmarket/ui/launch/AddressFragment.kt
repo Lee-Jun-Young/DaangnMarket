@@ -4,17 +4,16 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.FragmentLaunchAddressBinding
 import com.smparkworld.daangnmarket.extension.getLastLocation
 import com.smparkworld.daangnmarket.extension.showRequestPermissionDialog
-import com.smparkworld.daangnmarket.model.Address
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,39 +35,35 @@ class AddressFragment : Fragment() {
         loadAroundAddress()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return FragmentLaunchAddressBinding.inflate(inflater).apply {
-            lifecycleOwner = viewLifecycleOwner
-            vm = loginViewModel
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ) = FragmentLaunchAddressBinding.inflate(inflater).apply {
+        lifecycleOwner = viewLifecycleOwner
+        vm = loginViewModel
 
-            btnAddressAround.setOnClickListener { loadAroundAddress() }
-            initObserver()
-            initAddressList(addressList)
-        }.root
-    }
+        btnAddressAround.setOnClickListener { loadAroundAddress() }
+        initObserver()
+        initAddressList(addressList)
+    }.root
 
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
             grantResults: IntArray
     ) {
-        var isDenied = false
         for (result in grantResults) {
-            if (result == PackageManager.PERMISSION_DENIED) isDenied = true
+            if (result == PackageManager.PERMISSION_DENIED) {
+                showRequestPermissionDialog()
+                return
+            }
         }
-        if (!isDenied) {
-            loadAroundAddress()
-        } else {
-            showRequestPermissionDialog()
-        }
+        loadAroundAddress()
     }
 
-    private fun onClickAddressItem(address: Address) {
-        loginViewModel.setSelectedAddress(address)
-    }
-
-    private fun loadAroundAddress() = getLastLocation { location ->
-        loginViewModel.loadAroundAddress(location)
+    private fun loadAroundAddress() {
+        getLastLocation { loginViewModel.loadAroundAddress(it) }
     }
 
     private fun initObserver() {
@@ -82,11 +77,17 @@ class AddressFragment : Fragment() {
         loginViewModel.addressFlow.observe(viewLifecycleOwner) { flow ->
 
             viewLifecycleOwner.lifecycleScope.launch {
-                val adapter = AddressAdapter(::onClickAddressItem)
+                val adapter = AddressAdapter {
+                    loginViewModel.setSelectedAddress(it)
+                }
                 list.adapter = adapter
 
                 adapter.addLoadStateListener {
-                    list.visibility = if (adapter.itemCount == 0) View.GONE else View.VISIBLE
+                    if (it.refresh is LoadState.NotLoading && adapter.itemCount == 0) {
+                        loginViewModel.setAddressLoadState(null)
+                    } else {
+                        loginViewModel.setAddressLoadState(it)
+                    }
                 }
                 flow.collectLatest {
                     adapter.submitData(it)

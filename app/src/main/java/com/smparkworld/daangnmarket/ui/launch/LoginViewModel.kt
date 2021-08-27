@@ -6,9 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.insertHeaderItem
-import androidx.paging.map
+import androidx.paging.*
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.data.repository.AddressRepository
 import com.smparkworld.daangnmarket.data.repository.UserRepository
@@ -16,8 +14,9 @@ import com.smparkworld.daangnmarket.model.Address
 import com.smparkworld.daangnmarket.model.AddressModel
 import com.smparkworld.daangnmarket.model.Result.Success
 import com.smparkworld.daangnmarket.model.Result.Error
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.*
@@ -39,8 +38,14 @@ class LoginViewModel @Inject constructor(
     private val _addressFlow = MutableLiveData<Flow<PagingData<AddressModel>>>()
     val addressFlow: LiveData<Flow<PagingData<AddressModel>>> = _addressFlow
 
-    private val _addressFail = MutableLiveData<Boolean>()
-    val addressFail: LiveData<Boolean> = _addressFail
+    private val _stateEmpty = MutableLiveData<Boolean>()
+    val stateEmpty: LiveData<Boolean> = _stateEmpty
+
+    private val _stateLoading = MutableLiveData<Boolean>()
+    val stateLoading: LiveData<Boolean> = _stateLoading
+
+    private val _stateError = MutableLiveData<Boolean>()
+    val stateError: LiveData<Boolean> = _stateError
 
     private val _selectedAddress = MutableLiveData<Address>()
     val selectedAddress: LiveData<Address> = _selectedAddress
@@ -50,56 +55,51 @@ class LoginViewModel @Inject constructor(
 
     private var timer: Timer? = null
 
+    private var searchJob: Job? = null
+
     val addressSearch = MutableLiveData<String>()
 
     val phoneNumber = MutableLiveData<String>()
 
     val securityNumber = MutableLiveData<String>()
 
-
     fun loadAroundAddress(location: Location) {
 
         viewModelScope.launch {
-
             addressSearch.value = null
-            _addressFail.value = false
-            _addressFlow.value = addressRepository.getAroundAddress(location, 20) {
-                when (it) {
-                    is IOException -> {
-                        _addressFail.value = true
-                        _error.value = R.string.error_failedToConnectNetwork
-                    }
-                    else -> {
-                        _addressFail.value = true
-                        _error.value = R.string.error_fatalNetwork
-                    }
-                }
-                it.printStackTrace()
-            }
+            _stateError.value = false
+            _addressFlow.value = addressRepository.getAroundAddress(location, 20)
         }
     }
 
     fun searchAddress() {
 
-        viewModelScope.launch {
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            delay(300)  // 모든 키보드 입력에 API 요청하지 않기 위해서 Delay 시킴.
 
             val search = addressSearch.value
             if (!search.isNullOrEmpty()) {
-                _addressFail.value = false
-                _addressFlow.value = addressRepository.getSearchedAddress(search, 20) {
-                    when (it) {
-                        is IOException -> {
-                            _addressFail.value = true
-                            _error.value = R.string.error_failedToConnectNetwork
-                        }
-                        else -> {
-                            _addressFail.value = true
-                            _error.value = R.string.error_fatalNetwork
-                        }
-                    }
-                    it.printStackTrace()
-                }
+                _stateError.value = false
+                _addressFlow.value = addressRepository.getSearchedAddress(search, 20)
             }
+        }
+    }
+
+    fun setAddressLoadState(loadState: CombinedLoadStates?) {
+        val state = loadState?.refresh
+        _stateLoading.value = state is LoadState.Loading
+        _stateEmpty.value   = state == null
+        _stateError.value   = state is LoadState.Error
+
+        if (state is LoadState.Error) {
+            _error.value = when (state.error) {
+                is IOException  ->
+                    R.string.error_failedToConnectNetwork
+                else ->
+                    R.string.error_fatalNetwork
+            }
+            state.error.printStackTrace()
         }
     }
 

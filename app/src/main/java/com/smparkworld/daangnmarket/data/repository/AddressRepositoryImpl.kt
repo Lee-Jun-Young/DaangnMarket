@@ -3,7 +3,6 @@ package com.smparkworld.daangnmarket.data.repository
 import android.location.Location
 import androidx.paging.*
 import com.smparkworld.daangnmarket.data.remote.AddressRemoteDataSource
-import com.smparkworld.daangnmarket.model.Address
 import com.smparkworld.daangnmarket.model.AddressModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
@@ -16,14 +15,13 @@ class AddressRepositoryImpl @Inject constructor(
 
     override suspend fun getAroundAddress(
             location: Location,
-            pageSize: Int,
-            error: suspend (Exception) -> Unit
+            pageSize: Int
     ) = withContext(Dispatchers.IO) {
 
         return@withContext Pager(
                 PagingConfig(pageSize = pageSize)
         ) {
-            AddressAroundPagingSource(remoteDataSource, location, pageSize, error)
+            AddressAroundPagingSource(remoteDataSource, location, pageSize)
         }.flow.map {
             it.map { item -> AddressModel.Item(item) as AddressModel }
                 .insertHeaderItem(item = AddressModel.Header("근처동네"))
@@ -37,14 +35,13 @@ class AddressRepositoryImpl @Inject constructor(
 
     override suspend fun getSearchedAddress(
             search: String,
-            pageSize: Int,
-            error: suspend (Exception) -> Unit
+            pageSize: Int
     ) = withContext(Dispatchers.IO) {
 
         return@withContext Pager(
                 PagingConfig(pageSize = pageSize)
         ) {
-            AddressSearchPagingSource(remoteDataSource, search, pageSize, error)
+            AddressSearchPagingSource(remoteDataSource, search, pageSize)
         }.flow.map {
             it.map { item -> AddressModel.Item(item) as AddressModel }
                 .insertHeaderItem(item = AddressModel.Header("'$search' 검색결과"))

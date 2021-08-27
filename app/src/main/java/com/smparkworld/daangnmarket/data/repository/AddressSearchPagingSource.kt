@@ -9,8 +9,7 @@ import retrofit2.HttpException
 class AddressSearchPagingSource(
         private val remoteDataSource: AddressRemoteDataSource,
         private val search: String,
-        private val pageSize: Int,
-        private val error: suspend (Exception) -> Unit
+        private val pageSize: Int
 ) : PagingSource<Int, Address>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Address> {
@@ -33,7 +32,6 @@ class AddressSearchPagingSource(
                 throw HttpException(response)
             }
         } catch (e: Exception) {
-            error(e)
             return LoadResult.Error(e)
         }
     }

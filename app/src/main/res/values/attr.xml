@@ -5,4 +5,7 @@
         <attr name="underlineColor" format="color" />
         <attr name="android:drawableLeft" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="LoadableLinearLayout">
+        <attr name="android:background" format="color"/>
+    </declare-styleable>
 </resources>
