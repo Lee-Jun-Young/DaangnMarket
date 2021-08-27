@@ -2,23 +2,32 @@ package com.smparkworld.daangnmarket.ui.main.categoryList
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityCategoryListBinding
+import com.smparkworld.daangnmarket.di.ViewModelFactory_Factory
 import com.smparkworld.daangnmarket.model.CategoryList
 
 
 class CategoryListActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var categoryBinding: ActivityCategoryListBinding
+    // private lateinit var categoryListViewModel: CategoryListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         categoryBinding = DataBindingUtil.setContentView(this, R.layout.activity_category_list)
         categoryBinding.lifeCategory = this@CategoryListActivity
+        categoryBinding.lifecycleOwner = this
+
         setRecyclerView()
+
+        // categoryListViewModel =  ViewModelProvider(this, CategoryListViewModel.Factory(application)).get(CategoryListViewModel::class.java)
+
     }
 
     private fun setRecyclerView() {
@@ -41,7 +50,7 @@ class CategoryListActivity : AppCompatActivity(), View.OnClickListener {
             CategoryList(applicationContext.getString(R.string.activityCategoryList_categoryName_15), R.drawable.category_15_true, R.drawable.category_15)
         )
 
-        val adapter = CategoryAdapter(applicationContext, categoryList)
+        val adapter = CategoryAdapter(this, categoryList)
         categoryBinding.recyclerview.layoutManager = GridLayoutManager(this, 3)
         categoryBinding.recyclerview.adapter = adapter
         categoryBinding.recyclerview.setHasFixedSize(true)

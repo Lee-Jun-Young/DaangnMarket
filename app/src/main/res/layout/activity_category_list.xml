@@ -8,6 +8,7 @@
         <variable
             name="lifeCategory"
             type="com.smparkworld.daangnmarket.ui.main.categoryList.CategoryListActivity" />
+
     </data>
 
     <LinearLayout
