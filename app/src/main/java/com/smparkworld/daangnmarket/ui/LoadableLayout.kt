@@ -6,7 +6,6 @@ import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.smparkworld.daangnmarket.R
 
