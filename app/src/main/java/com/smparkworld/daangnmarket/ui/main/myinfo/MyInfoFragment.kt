@@ -14,6 +14,6 @@ class MyInfoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_myinfo, container, false)
+        return inflater.inflate(R.layout.fragment_main_myinfo, container, false)
     }
 }

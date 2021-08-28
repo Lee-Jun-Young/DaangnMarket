@@ -12,4 +12,8 @@ class DaangnApp : Application() {
     override fun onCreate() {
         super.onCreate()
     }
+
+    companion object {
+        const val REQUEST_PERMISSION_CODE = 1000
+    }
 }

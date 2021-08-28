@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">당근마켓</string>
 
+    <!-- Error Messages -->
+    <string name="error_notYet">구현이 안 된 부분이에요! 다음에 공부해보겠습니다 : )</string>
+    <string name="error_notYetSMS">인증번호 SMS 발송은 유료여서 구현하지 않았습니다. \"0000\"을 입력하면 인증 가능합니다.</string>
+
+    <string name="error_permissionLocation">위치 권한이 꺼져있습니다.\n[권한] 설정에서 위치 권한을 허용해야 합니다.\n</string>
+    <string name="error_failedToConnectNetwork">당근마켓 서비스에 연결할 수 없습니다. 네트워크 상태를 확인해주세요.</string>
+    <string name="error_fatalNetwork">예기치 않은 네트워크 오류가 발생했습니다. 다시 시도해주세요.</string>
+
     <!-- MainActivity -->
     <string name="activityMain_bottomNaviMenuTitleHome">홈</string>
     <string name="activityMain_bottomNaviMenuTitleLife">동네생활</string>
@@ -12,4 +20,28 @@
     <string name="activityIntro_introTitle">우리 동네 중고 직거래</string>
     <string name="activityIntro_introDescription">당근마켓은 동네 직거래 마켓이에요.\n내 동네를 설정하고 시작해보세요!</string>
     <string name="activityIntro_start">내 동네 설정하고 시작하기</string>
+
+    <!-- AddressFragment -->
+    <string name="fragmentAddress_searchHint">내 동네 이름(동,읍,면)으로 검색</string>
+    <string name="fragmentAddress_findCurrentLocation">현재 위치로 찾기</string>
+    <string name="fragmentAddress_aroundTitle">근처동네</string>
+    <string name="fragmentAddress_addressEmptyDescription">검색 결과가 없습니다.\n동네 이름을 다시 확인해주세요!</string>
+    <string name="fragmentAddress_addressEmptyBtn">동네 이름 다시 검색하기</string>
+    <string name="fragmentAddress_addressFailDescription">현재 위치로 동네를 받아오지 못했습니다.\n내 동네 이름으로 검색해보세요!</string>
+    <string name="fragmentAddress_addressFailBtn">내 동네 이름 검색하기</string>
+
+
+    <!-- AuthFragment -->
+    <string name="fragmentAuth_title">전화번호 인증</string>
+    <string name="fragmentAuth_description">당근마켓은 휴대폰 번호로 가입해요.\n번호는 <b>안전하게 보관</b>되며 어디에도 공개되지 않아요.</string>
+    <string name="fragmentAuth_inputHint">휴대폰 번호를 입력해주세요</string>
+    <string name="fragmentAuth_authBtn">인증문자 받기</string>
+    <string name="fragmentAuth_authRetryBtn">인증문자 다시 받기</string>
+    <string name="fragmentAuth_findAccountByEmail">전화번호가 변경되었나요? <u>이메일로 계정찾기</u></string>
+    <string name="fragmentAuth_securityNumHint">인증번호를 입력해주세요</string>
+    <string name="fragmentAuth_securityNumDescription">어떤 경우에도 타인에게 공유하지 마세요!</string>
+    <string name="fragmentAuth_securityBtn">인증번호 확인</string>
+    <string name="fragmentAuth_authRetryNotYet">20초 이내에는 인증문자를 다시 전송할 수 없습니다.</string>
+    <string name="fragmentAuth_failedToAuthorization">전화번호 인증에 실패했어요 : (</string>
+    <string name="fragmentAuth_incorrectPhoneNum">전화번호가 잘못되었어요. 다시 한번 확인해주세요.</string>
 </resources>

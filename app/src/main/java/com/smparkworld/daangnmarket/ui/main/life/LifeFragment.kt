@@ -14,6 +14,6 @@ class LifeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_life, container, false)
+        return inflater.inflate(R.layout.fragment_main_life, container, false)
     }
 }

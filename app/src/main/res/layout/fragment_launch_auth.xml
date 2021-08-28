@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="kotlin.Unit"/>
+        <variable
+            name="vm"
+            type="com.smparkworld.daangnmarket.ui.launch.LoginViewModel" />
+        <variable
+            name="onClick"
+            type="kotlin.jvm.functions.Function1&lt;View, Unit>" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="@dimen/fragmentAuth_elevation"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:title="@string/fragmentAuth_title" />
+
+        <LinearLayout
+            android:id="@+id/llDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/fragmentAuth_contentPadding"
+            android:paddingRight="@dimen/fragmentAuth_contentPadding"
+            android:paddingLeft="@dimen/fragmentAuth_contentPadding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_lock_char"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fragmentAuth_contentPadding"
+                android:text="@string/fragmentAuth_description"
+                android:textSize="17dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fragmentAuth_contentPadding"
+            android:layout_marginRight="@dimen/fragmentAuth_contentPadding"
+            android:padding="@dimen/fragmentAuth_inputPadding"
+            android:background="@drawable/shape_edittext_border"
+            android:hint="@string/fragmentAuth_inputHint"
+            android:textColorHint="@color/gray"
+            android:text="@={vm.phoneNumber}"
+            android:textSize="@dimen/fragmentAuth_inputTextSize"
+            android:inputType="phone"
+            android:maxLength="13"/>
+
+        <Button
+            android:id="@+id/btnAuth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fragmentAuth_contentPadding"
+            android:padding="@dimen/fragmentAuth_inputPadding"
+            android:text="@string/fragmentAuth_authBtn"
+            android:textSize="@dimen/fragmentAuth_authBtnTextSize"
+            android:onClick="@{(v) -> onClick.invoke(v)}"
+            android:clickable="@{vm.phoneNumber.length() > 11 ? true : false}"
+            android:backgroundTint="@{vm.phoneNumber.length() > 11 ? @color/black : @color/gray}"/>
+
+        <TextView
+            android:id="@+id/tvFindByEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/fragmentAuth_findByEmailPadding"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/fragmentAuth_findAccountByEmail"
+            android:textColor="@color/black"
+            android:onClick="@{(v) -> onClick.invoke(v)}"/>
+
+        <LinearLayout
+            android:id="@+id/llSecurityNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/fragmentAuth_contentPadding"
+                android:layout_marginLeft="@dimen/fragmentAuth_contentPadding"
+                android:layout_marginRight="@dimen/fragmentAuth_contentPadding"
+                android:background="@drawable/shape_edittext_border"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etSecurityNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/fragmentAuth_inputPadding"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/fragmentAuth_securityNumHint"
+                    android:text="@={vm.securityNumber}"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/fragmentAuth_inputTextSize"
+                    android:inputType="phone"
+                    android:maxLength="13"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@{vm.authTimer}"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragmentAuth_securityNumDescriptionMarginTop"
+                android:layout_marginRight="@dimen/fragmentAuth_contentPadding"
+                android:layout_marginLeft="@dimen/fragmentAuth_contentPadding"
+                android:text="@string/fragmentAuth_securityNumDescription" />
+
+            <Button
+                android:id="@+id/btnConfirmSecurityNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fragmentAuth_contentPadding"
+                android:padding="@dimen/fragmentAuth_inputPadding"
+                android:text="@string/fragmentAuth_securityBtn"
+                android:textSize="@dimen/fragmentAuth_authBtnTextSize"
+                android:onClick="@{(v) -> onClick.invoke(v)}"
+                android:clickable="@{vm.securityNumber.length() > 0 ? true : false}"
+                android:backgroundTint="@{vm.securityNumber.length() > 0 ? @color/brandColor : @color/gray}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

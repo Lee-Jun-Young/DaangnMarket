@@ -1,10 +1,10 @@
 package com.smparkworld.daangnmarket.di
 
 import android.content.Context
-import com.smparkworld.daangnmarket.ui.main.MainActivity
+import com.smparkworld.daangnmarket.ui.launch.di.LoginComponent
+import com.smparkworld.daangnmarket.ui.splash.di.SplashComponent
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Module
 import javax.inject.Singleton
 
 @Singleton
@@ -12,8 +12,7 @@ import javax.inject.Singleton
     AppModule::class,
     AppBinds::class,
     NetworkModule::class,
-    ViewModelModule::class,
-    Subcomponents::class
+    ViewModelModule::class
 ])
 interface AppComponent {
 
@@ -21,8 +20,7 @@ interface AppComponent {
     interface Factory {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
-}
 
-@Module(subcomponents = [
-])
-object Subcomponents
+    fun loginComponent(): LoginComponent.Factory
+    fun splashComponent(): SplashComponent.Factory
+}

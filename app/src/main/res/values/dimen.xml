@@ -12,4 +12,36 @@
     <dimen name="activityIntro_startButtonMarginLeftRightBottom">15dp</dimen>
     <dimen name="activityIntro_startButtonPadding">12dp</dimen>
     <dimen name="activityIntro_startButtonTextSize">18dp</dimen>
+
+    <!-- AddressFragment -->
+    <dimen name="fragmentAddress_marginLeftRight">17dp</dimen>
+    <dimen name="fragmentAddress_searchMarginTop">8dp</dimen>
+    <dimen name="fragmentAddress_searchTestSize">17dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationMarginTop">12dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationMarginBottom">5dp</dimen>
+    <dimen name="fragmentAddress_findCurrentLocationTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_aroundAddressMarginTop">30dp</dimen>
+    <dimen name="fragmentAddress_aroundAddressTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressHeaderPadding">15dp</dimen>
+    <dimen name="fragmentAddress_addressHeaderTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressItemTextSize">15dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyImg">60dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyImgMarginBottom">40dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyDescriptionMarginTop">15dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyDescriptionTextSize">18dp</dimen>
+    <dimen name="fragmentAddress_addressEmptyBtnMarginTop">15dp</dimen>
+    <dimen name="fragmentAddress_addressFailImg">100dp</dimen>
+    <dimen name="fragmentAddress_addressFailImgMarginBottom">40dp</dimen>
+    <dimen name="fragmentAddress_addressFailDescriptionMarginTop">15dp</dimen>
+    <dimen name="fragmentAddress_addressFailDescriptionTextSize">18dp</dimen>
+    <dimen name="fragmentAddress_addressFailBtnMarginTop">15dp</dimen>
+
+    <!-- AuthFragment -->
+    <dimen name="fragmentAuth_elevation">7dp</dimen>
+    <dimen name="fragmentAuth_contentPadding">15dp</dimen>
+    <dimen name="fragmentAuth_inputPadding">10dp</dimen>
+    <dimen name="fragmentAuth_inputTextSize">19dp</dimen>
+    <dimen name="fragmentAuth_authBtnTextSize">17dp</dimen>
+    <dimen name="fragmentAuth_findByEmailPadding">5dp</dimen>
+    <dimen name="fragmentAuth_securityNumDescriptionMarginTop">5dp</dimen>
 </resources>
