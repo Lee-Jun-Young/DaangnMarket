@@ -33,11 +33,8 @@ class SplashActivity : AppCompatActivity() {
     private fun initObserver() {
         splashViewModel.login.observe(this) {
             if (it) {
-                Intent(this, MainActivity::class.java).apply {
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(this)
-                }
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             } else {
                 startActivity(Intent(this, IntroActivity::class.java))
                 finish()

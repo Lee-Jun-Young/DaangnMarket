@@ -80,7 +80,4 @@ dependencies {
     // Navigation view ktx
     def version_navigation = "2.3.3"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
-
-    // Material EditText
-    implementation "com.rengwuxian.materialedittext:library:2.1.4"
 }

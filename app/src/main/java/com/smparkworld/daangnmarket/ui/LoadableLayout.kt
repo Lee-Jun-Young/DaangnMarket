@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import com.smparkworld.daangnmarket.R
 
 class LoadableLayout @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private lateinit var loadingView: LinearLayout
@@ -22,8 +22,8 @@ class LoadableLayout @JvmOverloads constructor(
     init {
         context.obtainStyledAttributes(attrs, R.styleable.LoadableLinearLayout).apply {
             backgroundColor = getColor(
-                    R.styleable.LoadableLinearLayout_android_background,
-                    ContextCompat.getColor(context, R.color.opaqueGray)
+                R.styleable.LoadableLinearLayout_android_background,
+                ContextCompat.getColor(context, R.color.opaqueGray)
             )
         }.recycle()
 

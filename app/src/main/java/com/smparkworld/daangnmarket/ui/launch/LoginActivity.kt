@@ -43,11 +43,8 @@ class LoginActivity : AppCompatActivity() {
             nextStep()
         }
         loginViewModel.login.observe(this) {
-            Intent(this, MainActivity::class.java).let {
-                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(it)
-            }
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

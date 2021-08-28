@@ -121,7 +121,7 @@ class LoginViewModel @Inject constructor(
             /* 인증번호 확인 기능 구현 하는 곳, 임시로 0000일 경우 인증 성공 */
             if (securityNumber.value == "0000" && authTimer.value?.equals("00:00") == false) {
 
-                val phone = phoneNumber.value!!.replace(" ", "")
+                val phone = phoneNumber.value!!.replace("-", "")
                 val address = selectedAddress.value!!.id
 
                 val result = userRepository.login(phone, address)
