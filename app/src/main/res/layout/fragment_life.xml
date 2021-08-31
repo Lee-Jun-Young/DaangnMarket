@@ -25,18 +25,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:overlapAnchor="false"
+                    android:spinnerMode="dropdown" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:text="면목본동"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:layout_weight="4" />
 
                 <ImageView
                     android:id="@+id/iv_life_search"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_gravity="center"
                     android:layout_weight="0.5"
                     android:src="@drawable/ic_baseline_search_24" />
 
@@ -44,6 +50,7 @@
                     android:id="@+id/iv_life_list"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_gravity="center"
                     android:layout_weight="0.5"
                     android:src="@drawable/ic_list" />
 
@@ -51,6 +58,7 @@
                     android:id="@+id/iv_life_notification"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_gravity="center"
                     android:layout_weight="0.5"
                     android:src="@drawable/ic_life_notification" />
             </LinearLayout>

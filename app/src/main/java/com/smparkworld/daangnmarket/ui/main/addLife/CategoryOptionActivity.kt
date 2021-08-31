@@ -3,23 +3,27 @@ package com.smparkworld.daangnmarket.ui.main.addLife
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityCategoryOptionBinding
 
 class CategoryOptionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var categoryOptionBinding: ActivityCategoryOptionBinding
+    private val categoryOptionViewModel: CategoryOptionViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         categoryOptionBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_category_option)
         categoryOptionBinding.categoryOption = this@CategoryOptionActivity
+
+        categoryOptionBinding.lifecycleOwner = this
+        categoryOptionBinding.viewModel = categoryOptionViewModel
 
         setRecyclerview()
     }
@@ -30,13 +34,8 @@ class CategoryOptionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setRecyclerview() {
-        val totalValue: MutableMap<String, *>? = DaangnApp.prefs.getAll()
-        val data = ArrayList<String>()
-        totalValue?.forEach { (name, value) ->
-            if (value as Boolean) {
-                data.add(name)
-            }
-        }
+        val data = categoryOptionViewModel.getAll()
+
         if (data.isNotEmpty())
             categoryOptionBinding.tvSecondSubTitle.isVisible = true
         else

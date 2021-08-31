@@ -8,6 +8,10 @@
         <variable
             name="categoryOption"
             type="com.smparkworld.daangnmarket.ui.main.addLife.CategoryOptionActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.smparkworld.daangnmarket.ui.main.addLife.CategoryOptionViewModel" />
     </data>
 
     <LinearLayout

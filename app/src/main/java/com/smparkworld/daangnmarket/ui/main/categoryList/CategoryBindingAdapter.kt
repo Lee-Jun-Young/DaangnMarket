@@ -1,28 +1,18 @@
 package com.smparkworld.daangnmarket.ui.main.categoryList
 
 import android.widget.ImageView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.model.CategoryList
+import com.smparkworld.daangnmarket.ui.main.addLife.CategoryOptionAdapter
 
 object CategoryBindingAdapter {
-    /*
-    @BindingAdapter("bind_categoryList")
-    @JvmStatic
-    fun bindCategoryList(recyclerView: RecyclerView, items: ArrayList<CategoryList>?) {
-        if (recyclerView.adapter == null) {
-            val lm = GridLayoutManager(recyclerView.context, 3)
-            val adapter = items?.let { CategoryAdapter(it) }
-            recyclerView.layoutManager = lm
-            recyclerView.adapter = adapter
-            recyclerView.setHasFixedSize(true)
-        }
-        recyclerView.adapter?.notifyDataSetChanged()
-    }
-    */
 
     @BindingAdapter("bind_categoryImage")
     @JvmStatic

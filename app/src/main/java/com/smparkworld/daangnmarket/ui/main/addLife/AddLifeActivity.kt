@@ -1,6 +1,7 @@
 package com.smparkworld.daangnmarket.ui.main.addLife
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -23,9 +24,11 @@ import com.github.windsekirun.naraeimagepicker.NaraeImagePicker
 import com.github.windsekirun.naraeimagepicker.impl.OnPickResultListener
 import com.github.windsekirun.naraeimagepicker.item.PickerSettingItem
 import com.github.windsekirun.naraeimagepicker.item.enumeration.ViewMode
+import com.google.android.material.snackbar.Snackbar
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityAddLifeBinding
+import com.smparkworld.daangnmarket.ui.main.life.LifeFragment
 
 
 class AddLifeActivity : AppCompatActivity(), View.OnClickListener {
@@ -183,4 +186,5 @@ class AddLifeActivity : AppCompatActivity(), View.OnClickListener {
 
         alertDialog.show()
     }
+
 }
