@@ -7,21 +7,20 @@ import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.Snackbar
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
+import com.smparkworld.daangnmarket.data.RetrofitClient
 import com.smparkworld.daangnmarket.databinding.FragmentLifeBinding
+import com.smparkworld.daangnmarket.model.LifeList
 import com.smparkworld.daangnmarket.ui.main.addLife.AddLifeActivity
-import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryAdapter
 import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryListActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LifeFragment : Fragment(), View.OnClickListener {
 
@@ -39,6 +38,7 @@ class LifeFragment : Fragment(), View.OnClickListener {
 
         setChipGroup()
         initSpinner()
+        loadData()
         setupSpinnerHandler()
 
         lifeBinding.refreshLayout.setOnRefreshListener {
@@ -99,6 +99,24 @@ class LifeFragment : Fragment(), View.OnClickListener {
 
             }
         }
+    }
+
+    private fun loadData() {
+
+        RetrofitClient.getInstance().getLifeData().enqueue(object : Callback<List<LifeList>> {
+            override fun onResponse(call: Call<List<LifeList>>, response: Response<List<LifeList>>) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    body?.let {
+                        Log.d("this is!!", body.toString())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<LifeList>>, t: Throwable) {
+                Log.d("this is error", t.message.toString())
+            }
+        })
     }
 
 }

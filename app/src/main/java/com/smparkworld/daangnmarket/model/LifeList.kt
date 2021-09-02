@@ -1,10 +1,11 @@
 package com.smparkworld.daangnmarket.model
 
 import com.google.gson.annotations.SerializedName
+import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 
 data class LifeList(
-    // primary key
     @SerializedName("no")
     var no: Int,
 
@@ -21,7 +22,7 @@ data class LifeList(
     var content: String,
 
     // 카테고리
-    @SerializedName("category")
+    @SerializedName("content_category")
     var content_category: String,
 
     // 동네
@@ -34,5 +35,5 @@ data class LifeList(
 
     // 작성날짜
     @SerializedName("write_time")
-    var write_time: Date
+    var write_time: String
 )

@@ -12,10 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DaangnMarket">
+        android:theme="@style/Theme.DaangnMarket"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ui.main.addLife.CategoryOptionActivity"></activity>
-        <activity android:name=".ui.main.addLife.AddLifeActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".ui.main.addLife.AddLifeActivity"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".ui.main.categoryList.CategoryListActivity" />
         <activity
             android:name=".ui.SplashActivity"
