@@ -18,7 +18,7 @@
             android:id="@+id/life_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp">
+            android:elevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,74 +65,93 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#000000" />
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp">
+            android:layout_height="match_parent">
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <HorizontalScrollView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:overScrollMode="never"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:scrollbars="none">
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip_categoryList"
-                                style="@style/Widget.MaterialComponents.Chip.Action"
-                                android:layout_width="32dp"
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:onClick="@{life::onClick}"
-                                app:chipIcon="@drawable/ic_list" />
+                                android:background="@color/whiteGray"
+                                android:overScrollMode="never"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:scrollbars="none">
 
-                            <com.google.android.material.chip.Chip
-                                style="@style/Widget.MaterialComponents.Chip.Action"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:text="우리동네질문" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
-                            <com.google.android.material.chip.Chip
-                                style="@style/Widget.MaterialComponents.Chip.Action"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:text="동네사건사고" />
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/chip_categoryList"
+                                        style="@style/Widget.MaterialComponents.Chip.Action"
+                                        android:layout_width="32dp"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="@{life::onClick}"
+                                        app:chipBackgroundColor="@color/white"
+                                        app:chipIcon="@drawable/ic_list" />
 
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/chip_group"
-                                style="@style/Widget.MaterialComponents.Chip.Action"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="5dp"
-                                app:singleLine="true"
-                                app:singleSelection="true" />
+                                    <com.google.android.material.chip.Chip
+                                        style="@style/Widget.MaterialComponents.Chip.Action"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:text="우리동네질문"
+                                        app:chipBackgroundColor="@color/white" />
+
+                                    <com.google.android.material.chip.Chip
+                                        style="@style/Widget.MaterialComponents.Chip.Action"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:text="동네사건사고"
+                                        app:chipBackgroundColor="@color/white" />
+
+                                    <com.google.android.material.chip.ChipGroup
+                                        android:id="@+id/chip_group"
+                                        style="@style/Widget.MaterialComponents.Chip.Action"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="5dp"
+                                        app:singleLine="true"
+                                        app:singleSelection="true" />
+                                </LinearLayout>
+
+                            </HorizontalScrollView>
+
                         </LinearLayout>
-                    </HorizontalScrollView>
 
-                </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/life_recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never" />
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
 
                 <ImageButton
                     android:id="@+id/btn_moveAddLife"
@@ -144,6 +163,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:onClick="@{life::onClick}"
                     android:scaleType="fitCenter"
+                    android:stateListAnimator="@null"
                     android:src="@drawable/ic_life_add" />
 
             </FrameLayout>

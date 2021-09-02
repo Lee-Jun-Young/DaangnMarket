@@ -8,8 +8,11 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
+import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
@@ -17,6 +20,7 @@ import com.smparkworld.daangnmarket.data.RetrofitClient
 import com.smparkworld.daangnmarket.databinding.FragmentLifeBinding
 import com.smparkworld.daangnmarket.model.LifeList
 import com.smparkworld.daangnmarket.ui.main.addLife.AddLifeActivity
+import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryAdapter
 import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryListActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,11 +43,11 @@ class LifeFragment : Fragment(), View.OnClickListener {
         setChipGroup()
         initSpinner()
         loadData()
-        setupSpinnerHandler()
 
         lifeBinding.refreshLayout.setOnRefreshListener {
             lifeBinding.chipGroup.removeAllViews()
             setChipGroup()
+            loadData()
             lifeBinding.refreshLayout.isRefreshing = false
         }
 
@@ -70,6 +74,7 @@ class LifeFragment : Fragment(), View.OnClickListener {
             if (value as Boolean) {
                 val chip = Chip(context)
                 chip.text = name
+                chip.setChipBackgroundColorResource(R.color.white)
                 lifeBinding.chipGroup.addView(chip)
             }
         }
@@ -84,31 +89,20 @@ class LifeFragment : Fragment(), View.OnClickListener {
         lifeBinding.spinner.adapter = adapter
     }
 
-    private fun setupSpinnerHandler() {
-        lifeBinding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-        }
-    }
-
     private fun loadData() {
 
         RetrofitClient.getInstance().getLifeData().enqueue(object : Callback<List<LifeList>> {
-            override fun onResponse(call: Call<List<LifeList>>, response: Response<List<LifeList>>) {
+            override fun onResponse(
+                call: Call<List<LifeList>>,
+                response: Response<List<LifeList>>
+            ) {
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.let {
-                        Log.d("this is!!", body.toString())
+                        val adapter = context?.let { it1 -> LifeAdapter(it1, body as ArrayList<LifeList>) }
+                        lifeBinding.lifeRecyclerview.layoutManager = LinearLayoutManager(context)
+                        lifeBinding.lifeRecyclerview.adapter = adapter
+                        lifeBinding.lifeRecyclerview.setHasFixedSize(true)
                     }
                 }
             }
