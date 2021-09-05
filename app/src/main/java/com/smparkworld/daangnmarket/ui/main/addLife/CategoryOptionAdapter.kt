@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.smparkworld.daangnmarket.databinding.CategoryoptionItemBinding
-import com.smparkworld.daangnmarket.model.CategoryList
 
 class CategoryOptionAdapter(
     private var context: Context,

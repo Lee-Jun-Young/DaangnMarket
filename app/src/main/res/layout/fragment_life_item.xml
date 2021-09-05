@@ -22,9 +22,7 @@
             android:background="@color/whiteGray"
             android:padding="5dp"
             android:text="@{data.content_category}"
-            android:textSize="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

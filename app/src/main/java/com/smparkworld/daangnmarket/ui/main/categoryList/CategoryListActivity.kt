@@ -2,14 +2,11 @@ package com.smparkworld.daangnmarket.ui.main.categoryList
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityCategoryListBinding
-import com.smparkworld.daangnmarket.di.ViewModelFactory_Factory
 import com.smparkworld.daangnmarket.model.CategoryList
 
 

@@ -7,6 +7,7 @@
         <variable
             name="life"
             type="com.smparkworld.daangnmarket.ui.main.life.LifeFragment" />
+
     </data>
 
     <LinearLayout
@@ -161,7 +162,6 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="?attr/selectableItemBackground"
-                    android:onClick="@{life::onClick}"
                     android:scaleType="fitCenter"
                     android:stateListAnimator="@null"
                     android:src="@drawable/ic_life_add" />

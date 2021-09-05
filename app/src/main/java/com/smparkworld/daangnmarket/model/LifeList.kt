@@ -1,9 +1,7 @@
 package com.smparkworld.daangnmarket.model
 
 import com.google.gson.annotations.SerializedName
-import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.collections.ArrayList
+import java.io.Serializable
 
 data class LifeList(
     @SerializedName("no")
@@ -36,4 +34,4 @@ data class LifeList(
     // 작성날짜
     @SerializedName("write_time")
     var write_time: String
-)
+) : Serializable

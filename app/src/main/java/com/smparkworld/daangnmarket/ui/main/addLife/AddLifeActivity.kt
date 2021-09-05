@@ -1,7 +1,6 @@
 package com.smparkworld.daangnmarket.ui.main.addLife
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -16,7 +15,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.windsekirun.naraeimagepicker.Constants
@@ -24,12 +22,9 @@ import com.github.windsekirun.naraeimagepicker.NaraeImagePicker
 import com.github.windsekirun.naraeimagepicker.impl.OnPickResultListener
 import com.github.windsekirun.naraeimagepicker.item.PickerSettingItem
 import com.github.windsekirun.naraeimagepicker.item.enumeration.ViewMode
-import com.google.android.material.snackbar.Snackbar
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.ActivityAddLifeBinding
-import com.smparkworld.daangnmarket.ui.main.life.LifeFragment
-
 
 class AddLifeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var addLifeBinding: ActivityAddLifeBinding

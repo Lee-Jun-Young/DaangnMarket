@@ -5,22 +5,19 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
-import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.smparkworld.daangnmarket.DaangnApp
 import com.smparkworld.daangnmarket.R
+import com.smparkworld.daangnmarket.data.ApiInterface
 import com.smparkworld.daangnmarket.data.RetrofitClient
 import com.smparkworld.daangnmarket.databinding.FragmentLifeBinding
 import com.smparkworld.daangnmarket.model.LifeList
 import com.smparkworld.daangnmarket.ui.main.addLife.AddLifeActivity
-import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryAdapter
 import com.smparkworld.daangnmarket.ui.main.categoryList.CategoryListActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -91,7 +88,7 @@ class LifeFragment : Fragment(), View.OnClickListener {
 
     private fun loadData() {
 
-        RetrofitClient.getInstance().getLifeData().enqueue(object : Callback<List<LifeList>> {
+        RetrofitClient.getInstance().create(ApiInterface::class.java).getLifeData().enqueue(object : Callback<List<LifeList>> {
             override fun onResponse(
                 call: Call<List<LifeList>>,
                 response: Response<List<LifeList>>
@@ -99,7 +96,8 @@ class LifeFragment : Fragment(), View.OnClickListener {
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.let {
-                        val adapter = context?.let { it1 -> LifeAdapter(it1, body as ArrayList<LifeList>) }
+                        var data = body
+                        val adapter = context?.let { it1 -> LifeAdapter(it1, data) }
                         lifeBinding.lifeRecyclerview.layoutManager = LinearLayoutManager(context)
                         lifeBinding.lifeRecyclerview.adapter = adapter
                         lifeBinding.lifeRecyclerview.setHasFixedSize(true)

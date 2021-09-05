@@ -1,10 +1,5 @@
 package com.smparkworld.daangnmarket.ui.main.addLife
 
-import android.app.Activity
-import android.app.Application
-import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.smparkworld.daangnmarket.R
 import com.smparkworld.daangnmarket.databinding.SelectImageItemBinding
-import kotlin.coroutines.coroutineContext
 
 class SelectImageAdapter(private val imageUrlList: ArrayList<String>) :
     RecyclerView.Adapter<SelectImageAdapter.ViewHolder>() {
