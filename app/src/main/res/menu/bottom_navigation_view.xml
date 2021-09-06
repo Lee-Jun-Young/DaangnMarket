@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itemHome"
+        android:icon="@drawable/selector_bottomnavi_home"
+        android:title="@string/activityMain_bottomNaviMenuTitleHome"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/itemLife"
+        android:icon="@drawable/selector_bottomnavi_life"
+        android:title="@string/activityMain_bottomNaviMenuTitleLife"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/itemMyLocation"
+        android:icon="@drawable/selector_bottomnavi_mylocation"
+        android:title="@string/activityMain_bottomNaviMenuTitleMyLocation"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/itemChat"
+        android:icon="@drawable/selector_bottomnavi_chat"
+        android:title="@string/activityMain_bottomNaviMenuTitleChat"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/itemMyInfo"
+        android:icon="@drawable/selector_bottomnavi_myinfo"
+        android:title="@string/activityMain_bottomNaviMenuTitleMyInfo"
+        app:showAsAction="always"/>
+</menu>

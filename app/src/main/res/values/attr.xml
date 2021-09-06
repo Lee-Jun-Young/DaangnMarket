@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClearEditText">
+        <attr name="clearButton" format="reference" />
+        <attr name="underlineColor" format="color" />
+        <attr name="android:drawableLeft" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="LoadableLinearLayout">
+        <attr name="android:background" format="color"/>
+    </declare-styleable>
+</resources>

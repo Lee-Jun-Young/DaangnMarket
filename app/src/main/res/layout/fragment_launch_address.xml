@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.smparkworld.daangnmarket.ui.launch.LoginViewModel" />
+    </data>
+
+    <com.smparkworld.daangnmarket.ui.LoadableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:loading="@{vm.stateLoading == true &amp;&amp; vm.addressSearch.length() == 0}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.smparkworld.daangnmarket.ui.ClearEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragmentAddress_searchMarginTop"
+                android:layout_marginLeft="@dimen/fragmentAddress_marginLeftRight"
+                android:layout_marginRight="@dimen/fragmentAddress_marginLeftRight"
+                android:singleLine="true"
+                android:hint="@string/fragmentAddress_searchHint"
+                android:textColorHint="@color/gray"
+                android:text="@={vm.addressSearch}"
+                android:textSize="@dimen/fragmentAddress_searchTestSize"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:imeOptions="actionSearch"
+                app:clearButton="@drawable/ic_baseline_cancel_24"
+                app:underlineColor="@color/gray"
+                app:onAction="@{vm::searchAddress}"/>
+
+            <Button
+                android:id="@+id/btnAddressAround"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragmentAddress_findCurrentLocationMarginTop"
+                android:layout_marginLeft="@dimen/fragmentAddress_marginLeftRight"
+                android:layout_marginRight="@dimen/fragmentAddress_marginLeftRight"
+                android:layout_marginBottom="@dimen/fragmentAddress_findCurrentLocationMarginBottom"
+                android:backgroundTint="@color/brandColor"
+                android:text="@string/fragmentAddress_findCurrentLocation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/fragmentAddress_findCurrentLocationTextSize"
+                android:textStyle="bold"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Empty Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:visibility="@{vm.stateEmpty ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fragmentAddress_addressEmptyImgMarginBottom"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/fragmentAddress_addressEmptyImg"
+                            android:layout_height="@dimen/fragmentAddress_addressEmptyImg"
+                            android:src="@drawable/img_no_result"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fragmentAddress_addressEmptyDescriptionMarginTop"
+                            android:gravity="center"
+                            android:text="@string/fragmentAddress_addressEmptyDescription"
+                            android:textSize="@dimen/fragmentAddress_addressEmptyDescriptionTextSize"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fragmentAddress_addressEmptyBtnMarginTop"
+                            android:text="@string/fragmentAddress_addressEmptyBtn"
+                            android:textSize="@dimen/fragmentAddress_addressEmptyDescriptionTextSize"
+                            android:textColor="@color/brandColor"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Error Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:visibility="@{vm.stateError ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fragmentAddress_addressFailImgMarginBottom"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/fragmentAddress_addressFailImg"
+                            android:layout_height="@dimen/fragmentAddress_addressFailImg"
+                            android:src="@drawable/img_no_location"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fragmentAddress_addressFailDescriptionMarginTop"
+                            android:gravity="center"
+                            android:text="@string/fragmentAddress_addressFailDescription"
+                            android:textSize="@dimen/fragmentAddress_addressFailDescriptionTextSize"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fragmentAddress_addressFailBtnMarginTop"
+                            android:text="@string/fragmentAddress_addressFailBtn"
+                            android:textSize="@dimen/fragmentAddress_addressFailDescriptionTextSize"
+                            android:textColor="@color/brandColor"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- List Layout -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/addressList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:scrollbars="vertical"
+                    android:visibility="@{vm.stateEmpty != true &amp;&amp; vm.stateError != true ? View.VISIBLE : View.GONE}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_launch_address" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </com.smparkworld.daangnmarket.ui.LoadableLayout>
+
+</layout>

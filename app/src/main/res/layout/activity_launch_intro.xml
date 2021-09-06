@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteGray">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activityIntro_titleMarginTop"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activityIntro_titleMarginBottom"
+                android:src="@drawable/img_launch_title"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_launch_intro" />
+
+                <ImageView
+                    android:id="@+id/ivRipple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_circle_24"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_marker"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activityIntro_introTitleMarginTop"
+                android:gravity="center"
+                android:text="@string/activityIntro_introTitle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/activityIntro_introTitleTextSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activityIntro_introDescriptionMarginTop"
+                android:gravity="center"
+                android:text="@string/activityIntro_introDescription"
+                android:textColor="@color/black"
+                android:textSize="@dimen/activityIntro_introDescriptionTextSize" />
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activityIntro_startButtonMarginTop"
+                android:layout_marginLeft="@dimen/activityIntro_startButtonMarginLeftRightBottom"
+                android:layout_marginRight="@dimen/activityIntro_startButtonMarginLeftRightBottom"
+                android:layout_marginBottom="@dimen/activityIntro_startButtonMarginLeftRightBottom"
+                android:backgroundTint="@color/brandColor"
+                android:padding="@dimen/activityIntro_startButtonPadding"
+                android:text="@string/activityIntro_start"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activityIntro_startButtonTextSize"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
