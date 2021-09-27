@@ -7,7 +7,7 @@
 |메인페이지의 "동네생활" 기능|[Lee-Jun-Young](https://github.com/Lee-Jun-Young)| X |
 
 ## 1. Git-flow
-Vincent Driessen이 제안한 Git Flow를 토대로 공부했지만, 본 클론 앱에서는 아래의 4개 브랜치로만 진행했습니다.
+Vincent Driessen이 제안한 Git Flow를 활용 중입니다.
 - main<br>
 기준이 되는 브랜치로 제품을 배포하는 브랜치 입니다. 본 클론 앱에서는 일정 목표에 도달했을 때 합칩니다.
 - dev<br>
